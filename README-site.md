@@ -1,6 +1,6 @@
 # AmeriDream Mortgage Group — Website
 
-Static HTML/CSS/JS website for AmeriDream Mortgage Group, LLC (NMLS #275209). Hosted on Netlify.
+Static HTML/CSS/JS website for AmeriDream Mortgage Group, LLC (NMLS #275209). Hosted on Vercel, deployed via GitHub.
 
 ---
 
@@ -10,7 +10,7 @@ Static HTML/CSS/JS website for AmeriDream Mortgage Group, LLC (NMLS #275209). Ho
 |---|---|---|
 | `index.html` | `/` | Homepage — hero, services, rates, process, reviews, team, FAQ |
 | `contact.html` | `/contact` | Contact form (Netlify Forms), office locations, hours |
-| `learning-center.html` | `/learning-center` | Mortgage calculator, affordability calculator, glossary |
+| `learning-center.html` | `/learning-center` | Mortgage calculator, affordability calculator, refinance savings calculator, glossary |
 | `loan-types.html` | `/loan-types` | Conventional, FHA, VA, USDA, Jumbo loan details |
 | `meet-the-team.html` | `/meet-the-team` | Loan originator profiles |
 | `checklist.html` | `/checklist` | Interactive first-time buyer checklist |
@@ -28,23 +28,45 @@ Static HTML/CSS/JS website for AmeriDream Mortgage Group, LLC (NMLS #275209). Ho
 
 ## Deployment
 
-### First deploy
-1. Make sure all 7 files are in one folder:
-   - `index.html`
-   - `contact.html`
-   - `learning-center.html`
-   - `loan-types.html`
-   - `meet-the-team.html`
-   - `checklist.html`
-   - `_headers`
-2. Go to [app.netlify.com](https://app.netlify.com)
-3. Drag and drop the folder onto the deploy zone
-4. Site is live instantly at a Netlify subdomain (e.g. `random-name.netlify.app`)
+The site is connected to GitHub and auto-deploys on every push to `main`.
 
-### Updating the site
-- Make changes to the relevant HTML file
-- Drag and drop the full folder again onto Netlify
-- Or connect a GitHub repo for automatic deploys on every push
+### Workflow
+1. Make changes to the relevant HTML file locally
+2. Commit and push to `main` on GitHub
+3. Vercel detects the push and deploys automatically — live in ~30 seconds
+
+### First-time Vercel setup
+1. Go to [vercel.com](https://vercel.com) and sign in
+2. Click **Add New Project** → **Import Git Repository**
+3. Select `trh-dx/ameridream-website`
+4. Leave all settings as default (no build command needed for static HTML)
+5. Click **Deploy**
+
+---
+
+## Navigation
+
+The top nav bar includes:
+- Logo (links to homepage)
+- Page links: Loan Types, Learning Center, Meet the Team, Buyer Checklist, Contact
+- Facebook icon (links to AmeriDream Facebook page)
+- Client Login button
+- Phone number (tap-to-call on mobile)
+- Apply Now button
+
+On mobile (under 900px) the page links collapse. The Facebook icon, Client Login, phone, and Apply Now remain visible with compact sizing.
+
+---
+
+## Calculators
+
+All three calculators live in `learning-center.html`. Logic is in a `<script>` tag at the bottom of that file.
+
+| Calculator | ID | Description |
+|---|---|---|
+| Mortgage payment | `#calculator` | Estimates monthly P&I based on price, down payment, rate, and term |
+| Affordability | `#affordability` | Estimates max home price based on income, debt, savings, and rate |
+| Refinance savings | `#refinance` | Compares current loan vs new loan — shows monthly savings, break-even point, and lifetime interest saved |
 
 ---
 
@@ -64,7 +86,7 @@ The contact form on `contact.html` uses **Netlify Forms**.
 
 ## Security
 
-A `_headers` file is included in the root of the project. Netlify reads this automatically and applies the following security headers to every page:
+A `_headers` file is included in the root of the project. It applies the following security headers to every page:
 
 - `X-Frame-Options` — prevents clickjacking
 - `X-Content-Type-Options` — prevents MIME sniffing
@@ -77,12 +99,11 @@ A `_headers` file is included in the root of the project. Netlify reads this aut
 
 ## External Links
 
-These are third-party URLs used throughout the site. They are not hosted on Netlify and require no changes:
-
 | Purpose | URL |
 |---|---|
 | Apply Now / Loan Application | `https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545` |
 | Client / Borrower Portal Login | `https://www.ameridream.mortgage/?borrowerportal&siteid=5691082585` |
+| Facebook Page | `https://www.facebook.com/450436438398721` |
 | Privacy Policy | `https://ameridreammtg.com/privacy-policy` |
 | File a Complaint | `https://ameridreammtg.com/file-a-complaint` |
 | NMLS Consumer Access | `http://www.nmlsconsumeraccess.org/` |
@@ -91,13 +112,13 @@ These are third-party URLs used throughout the site. They are not hosted on Netl
 
 ## Custom Domain
 
-DNS is managed through GoDaddy. See `README-godaddy-cname.md` for instructions on pointing your domain to Netlify.
+DNS is managed through GoDaddy. See `README-godaddy-cname.md` for instructions on pointing your domain to Vercel.
 
 ---
 
 ## Notes
 
 - All phone numbers are formatted as `tel:` links for mobile tap-to-call
-- Calculator logic is in `learning-center.html` inside a `<script>` tag at the bottom of the file
 - The checklist progress is stored in memory only — it resets on page refresh (no backend needed)
 - NMLS numbers: Main #275209 · Decatur #1652928 · Bridgeport #2286544
+- To update the Facebook link, search for `facebook.com/450436438398721` in `index.html` and replace with your page URL

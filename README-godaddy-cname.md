@@ -1,6 +1,6 @@
-# Adding a CNAME Record in GoDaddy to Point to Netlify
+# Adding a CNAME Record in GoDaddy to Point to Vercel
 
-This guide walks you through connecting your GoDaddy domain to your Netlify site without transferring your DNS. Your existing GoDaddy services (email, borrower portal, etc.) will remain completely unaffected.
+This guide walks you through connecting your GoDaddy domain to your Vercel site. Your existing GoDaddy services (email, borrower portal, etc.) will remain completely unaffected.
 
 ---
 
@@ -8,18 +8,17 @@ This guide walks you through connecting your GoDaddy domain to your Netlify site
 
 You will need:
 - Access to your GoDaddy account
-- Your Netlify site's subdomain — found in Netlify under **Site settings → Domain management** (looks like `your-site-name.netlify.app`)
+- Your Vercel project open — found at [vercel.com/dashboard](https://vercel.com/dashboard)
 
 ---
 
-## Step 1 — Add Your Custom Domain in Netlify
+## Step 1 — Add Your Custom Domain in Vercel
 
-1. Log in to [app.netlify.com](https://app.netlify.com)
-2. Click on your site
-3. Go to **Site settings → Domain management**
-4. Click **Add a domain**
-5. Enter your domain (e.g. `ameridreammtg.com`) and click **Verify**
-6. Netlify will show you the DNS values you need — keep this tab open
+1. Log in to [vercel.com](https://vercel.com)
+2. Click on your project (`ameridream-website`)
+3. Go to **Settings → Domains**
+4. Enter your domain (e.g. `ameridreammtg.com`) and click **Add**
+5. Vercel will show you the DNS values you need — keep this tab open
 
 ---
 
@@ -42,7 +41,7 @@ In the DNS Management screen:
 |---|---|
 | **Type** | `CNAME` |
 | **Name** | `www` |
-| **Value** | `your-site-name.netlify.app` (your Netlify subdomain) |
+| **Value** | `cname.vercel-dns.com` |
 | **TTL** | `1 Hour` (or default) |
 
 3. Click **Save**
@@ -53,19 +52,21 @@ In the DNS Management screen:
 
 ## Step 4 — Point the Apex Domain (Without www)
 
-GoDaddy does not support CNAME records on the apex domain (e.g. `ameridreammtg.com` with no www). Instead you need to add **A records** pointing to Netlify's load balancer IPs.
+GoDaddy does not support CNAME records on the apex domain (e.g. `ameridreammtg.com` with no www). Instead add an **A record** pointing to Vercel's IP.
 
 1. Click **Add New Record**
-2. Add the following A records one at a time:
+2. Add the following A record:
 
 | Field | Value |
 |---|---|
 | **Type** | `A` |
 | **Name** | `@` |
-| **Value** | `75.2.60.5` |
+| **Value** | `76.76.21.21` |
 | **TTL** | `1 Hour` |
 
-Netlify currently uses the IP above for apex domains. Double-check the latest value in your Netlify dashboard under **Domain management** — it will show the exact IP to use.
+3. Click **Save**
+
+> Double-check the latest IP in your Vercel dashboard under **Settings → Domains** — it will show the exact value to use.
 
 ---
 
@@ -77,27 +78,25 @@ Netlify currently uses the IP above for apex domains. Double-check the latest va
 
 ---
 
-## Step 6 — Enable HTTPS in Netlify
+## Step 6 — Verify in Vercel
 
-Once your domain is propagating:
+Once DNS has propagated:
 
-1. Go back to Netlify → **Site settings → Domain management**
-2. Scroll down to **HTTPS**
-3. Click **Verify DNS configuration**
-4. Once verified, click **Provision certificate**
-5. Netlify will issue a free SSL certificate automatically via Let's Encrypt
+1. Go back to Vercel → **Settings → Domains**
+2. Your domain should show a green **Valid Configuration** status
+3. Vercel issues HTTPS certificates automatically — no action needed
 
 ---
 
 ## Troubleshooting
 
 **Site not showing after 2 hours:**
-- Double-check the CNAME value in GoDaddy matches your Netlify subdomain exactly
+- Double-check the CNAME value in GoDaddy matches `cname.vercel-dns.com` exactly
 - Make sure there are no conflicting A records on the `www` name in GoDaddy
 
-**HTTPS not provisioning:**
-- DNS must be fully propagated before SSL will work
-- Wait a bit longer and try **Verify DNS configuration** again in Netlify
+**Domain shows "Invalid Configuration" in Vercel:**
+- DNS must be fully propagated — wait longer and refresh the Vercel dashboard
+- Confirm the A record IP matches what Vercel shows under Settings → Domains
 
 **Existing email stopped working:**
 - Your MX records should not have been touched — check that they are still present in GoDaddy DNS
@@ -109,5 +108,5 @@ Once your domain is propagating:
 
 | Type | Name | Value |
 |---|---|---|
-| `CNAME` | `www` | `your-site-name.netlify.app` |
-| `A` | `@` | `75.2.60.5` |
+| `CNAME` | `www` | `cname.vercel-dns.com` |
+| `A` | `@` | `76.76.21.21` |
