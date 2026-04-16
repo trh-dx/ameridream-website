@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us | AmeriDream Mortgage Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue:#1A5BA6;--blue-dark:#0D3D75;--blue-light:#E6F1FB;--blue-pale:#F0F7FF;
+    --red:#C0272D;--red-dark:#9B1F24;--red-light:#FDEAEA;
+    --white:#FFFFFF;--off-white:#F5F8FC;--border:#D8E8F4;
+    --text-dark:#0D2E54;--text-mid:#355070;--text-muted:#7A98B8;
+    --font-serif:'DM Serif Display',Georgia,serif;--font-sans:'DM Sans',system-ui,sans-serif;
+    --r-sm:6px;--r-md:12px;--r-lg:20px;--r-xl:32px;
+    --shadow-sm:0 2px 12px rgba(13,61,117,0.07);--shadow-md:0 8px 32px rgba(13,61,117,0.12);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-sans);background:var(--off-white);color:var(--text-dark);line-height:1.6;overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;background:#FFFFFF;border-bottom:3px solid var(--red);box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo-mark{width:40px;height:40px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:17px;color:var(--white);}
+  .logo-name{font-family:var(--font-serif);font-size:22px;color:var(--white);display:flex;flex-direction:column;line-height:1.1;} .logo-sub{font-family:var(--font-sans);font-size:10px;font-weight:500;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-top:2px;}
+  
+  .logo-i-star{position:relative;display:inline-block;}.logo-star{position:absolute;top:-1px;left:50%;transform:translateX(-50%);color:#C0272D;font-size:9px;line-height:1;}
+  .nav-links{display:flex;align-items:center;gap:2px;list-style:none;}
+  .nav-links a{font-size:13px;color:var(--blue);font-weight:500;text-decoration:none;padding:7px 14px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--blue-pale);transition:all .18s;}
+  .nav-links a:hover{color:var(--blue-dark);background:var(--blue-light);border-color:var(--blue);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .nav-phone{font-size:13px;color:var(--blue);font-weight:500;text-decoration:none;}
+  .btn-red{background:var(--red);color:var(--white);font-size:13px;font-weight:600;padding:8px 20px;border-radius:var(--r-sm);text-decoration:none;border:none;cursor:pointer;letter-spacing:.03em;transition:all .2s;display:inline-block;}
+  .btn-red:hover{background:var(--red-dark);}
+
+  .page-hero{padding:120px 5% 72px;background:var(--blue);position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 80% 50%,rgba(192,39,45,.15) 0%,transparent 60%),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:100% 100%,56px 56px,56px 56px;}
+  .page-hero-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto;}
+  .breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:14px;}
+  .breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;}
+  .page-hero h1{font-family:var(--font-serif);font-size:clamp(36px,5vw,60px);color:var(--white);line-height:1.08;margin-bottom:16px;}
+  .page-hero h1 em{font-style:italic;color:var(--red);}
+  .page-hero p{font-size:17px;color:rgba(255,255,255,.62);line-height:1.72;max-width:540px;font-weight:300;}
+
+  .wrap{max-width:1180px;margin:0 auto;}
+
+  /* CONTACT GRID */
+  .contact-section{padding:72px 5% 96px;}
+  .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:52px;align-items:start;}
+
+  /* FORM */
+  .contact-form-wrap{background:var(--white);border-radius:var(--r-xl);padding:40px 36px;border:1px solid var(--border);box-shadow:var(--shadow-sm);}
+  .form-title{font-family:var(--font-serif);font-size:26px;color:var(--text-dark);margin-bottom:6px;}
+  .form-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+  .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+  .form-group label{font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--r-md);font-size:14px;color:var(--text-dark);font-family:var(--font-sans);outline:none;transition:border-color .2s;background:var(--off-white);}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);background:var(--white);}
+  .form-group textarea{resize:vertical;min-height:110px;}
+  .form-submit{width:100%;background:var(--red);color:var(--white);font-size:15px;font-weight:600;padding:14px;border-radius:var(--r-md);border:none;cursor:pointer;letter-spacing:.02em;transition:all .22s;margin-top:6px;font-family:var(--font-sans);}
+  .form-submit:hover{background:var(--red-dark);transform:translateY(-1px);}
+  .form-note{font-size:11.5px;color:var(--text-muted);text-align:center;margin-top:10px;}
+
+  /* SUCCESS STATE */
+  .form-success{display:none;text-align:center;padding:32px 0;}
+  .success-icon{font-size:48px;margin-bottom:14px;}
+  .form-success h3{font-family:var(--font-serif);font-size:24px;color:var(--text-dark);margin-bottom:8px;}
+  .form-success p{font-size:14px;color:var(--text-mid);}
+
+  /* SIDEBAR */
+  .contact-sidebar{display:flex;flex-direction:column;gap:20px;}
+  .contact-card{background:var(--white);border-radius:var(--r-lg);padding:26px 24px;border:1px solid var(--border);}
+  .contact-card h3{font-family:var(--font-serif);font-size:18px;color:var(--text-dark);margin-bottom:16px;}
+  .contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+  .contact-item:last-child{margin-bottom:0;}
+  .contact-icon{width:34px;height:34px;border-radius:8px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+  .contact-icon.red-icon{background:var(--red-light);}
+  .contact-item-label{font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px;display:block;}
+  .contact-item-val{font-size:14px;color:var(--text-dark);line-height:1.5;}
+  .contact-item-val a{color:var(--blue);text-decoration:none;font-weight:500;}
+  .contact-item-val a:hover{color:var(--blue-dark);text-decoration:underline;}
+
+  .hours-grid{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13.5px;}
+  .hours-day{color:var(--text-muted);}
+  .hours-val{color:var(--text-dark);font-weight:500;}
+
+  .apply-card{background:var(--blue);border-radius:var(--r-lg);padding:28px 24px;text-align:center;}
+  .apply-card h3{font-family:var(--font-serif);font-size:20px;color:var(--white);margin-bottom:8px;}
+  .apply-card p{font-size:13.5px;color:rgba(255,255,255,.58);line-height:1.65;margin-bottom:20px;font-weight:300;}
+  .apply-card .btn-red{width:100%;text-align:center;font-size:14px;padding:12px;}
+
+  /* LOCATIONS */
+  .locations-section{background:var(--white);padding:72px 5%;border-top:1px solid var(--border);}
+  .locations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;}
+  .location-card{background:var(--off-white);border-radius:var(--r-lg);padding:28px 24px;border:1px solid var(--border);transition:all .25s;}
+  .location-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-3px);}
+  .location-num{width:32px;height:32px;border-radius:50%;background:var(--red);color:var(--white);font-family:var(--font-serif);font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .location-card h3{font-family:var(--font-serif);font-size:20px;color:var(--text-dark);margin-bottom:6px;}
+  .location-nmls{font-size:11px;color:var(--text-muted);margin-bottom:12px;font-weight:500;letter-spacing:.05em;}
+  .location-address{font-size:13.5px;color:var(--text-mid);line-height:1.65;margin-bottom:12px;}
+  .location-phone{font-size:14px;font-weight:600;color:var(--blue);text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+  .location-phone:hover{color:var(--blue-dark);}
+
+  footer{background:var(--blue-dark);padding:40px 5% 24px;}
+  .footer-bottom-bar{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-bottom-bar p{font-size:12px;color:rgba(255,255,255,.25);}
+  .f-links-bar{display:flex;gap:18px;}
+  .f-links-bar a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;}
+  .f-links-bar a:hover{color:rgba(255,255,255,.7);}
+  .footer-legal-bar{max-width:1180px;margin:16px auto 0;font-size:11px;color:rgba(255,255,255,.15);line-height:1.7;padding-top:16px;border-top:1px solid rgba(255,255,255,.05);}
+
+  @media(max-width:960px){.contact-grid{grid-template-columns:1fr;}.nav-links{display:none;}.locations-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><span class="logo-name">Amer<span class="logo-i-star">&#305;<span class="logo-star">★</span></span>Dream<span class="logo-sub">Mortgage Group, LLC</span></span></a>
+  <ul class="nav-links">
+    <li><a href="loan-types.html">Loan types</a></li>
+    <li><a href="learning-center.html">Learning center</a></li>
+    <li><a href="checklist.html">Buyer checklist</a></li>
+    <li><a href="meet-the-team.html">Our team</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://www.ameridream.mortgage/?borrowerportal&siteid=5691082585" class="btn-portal">Client Login</a><a href="tel:4693624700" class="nav-phone">(469) 362-4700</a>
+    <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-red">Apply Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Contact Us</div>
+    <h1>Let's talk about<br><em>your home loan.</em></h1>
+    <p>We're based right here in North Texas and ready to answer your questions — no call centers, no runaround. Just real people who care.</p>
+  </div>
+</div>
+
+<section class="contact-section">
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <div class="contact-form-wrap">
+        <div id="formContent">
+          <div class="form-title">Send us a message</div>
+          <div class="form-sub">We'll get back to you within one business day.</div>
+          <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+            <div class="form-row">
+              <div class="form-group"><label>First name</label><input type="text" name="first-name" placeholder="Jane" required /></div>
+              <div class="form-group"><label>Last name</label><input type="text" name="last-name" placeholder="Smith" required /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="jane@email.com" required /></div>
+              <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="(555) 000-0000" /></div>
+            </div>
+            <div class="form-group">
+              <label>I'm interested in</label>
+              <select name="interest">
+                <option value="">Select a topic...</option>
+                <option>Buying a home</option>
+                <option>Refinancing</option>
+                <option>New construction</option>
+                <option>Getting pre-approved</option>
+                <option>General question</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" placeholder="Tell us a little about your situation or what you'd like to know..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Message →</button>
+            <p class="form-note">We'll never share your info. No spam, ever.</p>
+          </form>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✅</div>
+          <h3>Message received!</h3>
+          <p>Thanks for reaching out. One of our loan officers will be in touch within one business day.</p>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="contact-sidebar">
+        <div class="contact-card">
+          <h3>Reach us directly</h3>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <span class="contact-item-label">Main office</span>
+              <div class="contact-item-val"><a href="tel:4693624700">(469) 362-4700</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon red-icon">📞</div>
+            <div>
+              <span class="contact-item-label">Decatur office</span>
+              <div class="contact-item-val"><a href="tel:9406272034">(940) 627-2034</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <span class="contact-item-label">Bridgeport office</span>
+              <div class="contact-item-val"><a href="tel:9406440024">(940) 644-0024</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon red-icon">✉️</div>
+            <div>
+              <span class="contact-item-label">Client portal</span>
+              <div class="contact-item-val"><a href="https://www.ameridream.mortgage/?borrowerportal&siteid=5691082585">Log in to your account</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Office hours</h3>
+          <div class="hours-grid">
+            <span class="hours-day">Mon – Fri</span><span class="hours-val">9:00 am – 5:00 pm</span>
+            <span class="hours-day">Saturday</span><span class="hours-val">By appointment</span>
+            <span class="hours-day">Sunday</span><span class="hours-val">By appointment</span>
+          </div>
+        </div>
+
+        <div class="apply-card">
+          <h3>Ready to apply?</h3>
+          <p>Skip the form and start your application directly — takes about 10 minutes and there's no commitment.</p>
+          <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-red">Apply online now</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations-section">
+  <div class="wrap">
+    <span style="font-size:11.5px;font-weight:500;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px;display:block;">Our offices</span>
+    <h2 style="font-family:var(--font-serif);font-size:clamp(26px,3.5vw,40px);color:var(--text-dark);line-height:1.14;margin-bottom:14px;">Three locations<br>across North Texas.</h2>
+    <div class="locations-grid">
+      <div class="location-card">
+        <div class="location-num">1</div>
+        <h3>The Colony</h3>
+        <div class="location-nmls">NMLS #275209 · Main Office</div>
+        <p class="location-address">3700 Standridge Drive, Suite 101<br>The Colony, TX 75056</p>
+        <a href="tel:4693624700" class="location-phone">📞 (469) 362-4700</a>
+      </div>
+      <div class="location-card">
+        <div class="location-num">2</div>
+        <h3>Decatur</h3>
+        <div class="location-nmls">NMLS #1652928 · Branch Office</div>
+        <p class="location-address">207 W Main Street<br>Decatur, TX 76234</p>
+        <a href="tel:9406272034" class="location-phone">📞 (940) 627-2034</a>
+      </div>
+      <div class="location-card">
+        <div class="location-num">3</div>
+        <h3>Bridgeport</h3>
+        <div class="location-nmls">NMLS #2286544 · Branch Office</div>
+        <p class="location-address">1005 Stevens Street<br>Bridgeport, TX 76426</p>
+        <a href="tel:9406440024" class="location-phone">📞 (940) 644-0024</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom-bar">
+    <p>© 2026 AmeriDream Mortgage Group, LLC · NMLS #275209 · Equal Housing Lender</p>
+    <div class="f-links-bar">
+      <a href="index.html">Home</a><a href="loan-types.html">Loan types</a>
+      <a href="https://ameridreammtg.com/privacy-policy">Privacy Policy</a>
+      <a href="http://www.nmlsconsumeraccess.org/">NMLS Consumer Access</a>
+    </div>
+  </div>
+  <div class="footer-legal-bar">AmeriDream Mortgage Group, LLC (NMLS #275209) is an Equal Housing Lender. This is not a commitment to lend or extend credit. Programs, rates, terms and conditions are subject to change without notice.</div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(() => {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    })
+    .catch(() => alert('Something went wrong. Please call us directly at (469) 362-4700.'));
+  }
+</script>
+</body>
+</html>

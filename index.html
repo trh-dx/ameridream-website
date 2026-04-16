@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AmeriDream Mortgage Group | North Texas Home Loans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue:        #1A5BA6;
+    --blue-dark:   #0D3D75;
+    --blue-mid:    #1E6BBF;
+    --blue-light:  #E6F1FB;
+    --blue-pale:   #F0F7FF;
+    --red:         #C0272D;
+    --red-dark:    #9B1F24;
+    --red-light:   #FDEAEA;
+    --white:       #FFFFFF;
+    --off-white:   #F5F8FC;
+    --border:      #D8E8F4;
+    --text-dark:   #0D2E54;
+    --text-mid:    #355070;
+    --text-muted:  #7A98B8;
+    --font-serif:  'DM Serif Display', Georgia, serif;
+    --font-sans:   'DM Sans', system-ui, sans-serif;
+    --r-sm:  6px;
+    --r-md:  12px;
+    --r-lg:  20px;
+    --r-xl:  32px;
+    --shadow-sm: 0 2px 12px rgba(13,61,117,0.07);
+    --shadow-md: 0 8px 32px rgba(13,61,117,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); background: var(--off-white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes floatY { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+
+  .fade-up { animation: fadeUp 0.65s ease both; }
+  .d1 { animation-delay:.1s; } .d2 { animation-delay:.22s; } .d3 { animation-delay:.34s; }
+  .d4 { animation-delay:.46s; } .d5 { animation-delay:.6s; }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    height: 66px; padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--white);
+    border-bottom: 3px solid var(--red);
+    box-shadow: 0 2px 12px rgba(13,61,117,0.08);
+  }
+  .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .logo-mark { width:40px; height:40px; border-radius:8px; background:var(--red); display:flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-size:17px; color:var(--white); }
+  .logo-name { display:flex; flex-direction:column; line-height:1.1; }
+  .logo-name-text { font-family:var(--font-serif); font-size:30px; color:var(--blue); letter-spacing:.01em; white-space:nowrap; }
+  .logo-sub { font-family:var(--font-sans); font-size:12px; font-weight:500; color:var(--red); letter-spacing:.06em; text-transform:uppercase; margin-top:2px; white-space:nowrap; }
+  .logo-i-star { position:relative; display:inline-block; }
+  .logo-star { position:absolute; top:2px; left:50%; transform:translateX(-50%); color:#C0272D; font-size:8px; line-height:1; }
+  .nav-links { display:flex; align-items:center; gap:2px; list-style:none; }
+  .nav-links a { font-size:13.5px; color:var(--text-dark); text-decoration:none; padding:6px 13px; border-radius:var(--r-sm); transition:all .18s; }
+  .nav-links a:hover { color:var(--blue); background:var(--blue-light); }
+  .nav-right { display:flex; align-items:center; gap:14px; }
+  .nav-phone { font-size:13px; color:var(--text-dark); font-weight:500; text-decoration:none; }
+  .btn-red { background:var(--red); color:var(--white); font-size:13px; font-weight:600; padding:8px 20px; border-radius:var(--r-sm); text-decoration:none; border:none; cursor:pointer; letter-spacing:.03em; transition:all .2s; display:inline-block; }
+  .btn-red:hover { background:var(--red-dark); transform:translateY(-1px); }
+  .btn-portal { background:transparent; color:var(--blue); font-size:13px; font-weight:500; padding:7px 16px; border-radius:var(--r-sm); text-decoration:none; border:1.5px solid var(--blue); transition:all .2s; display:inline-block; }
+  .btn-portal:hover { background:var(--blue-light); }
+
+  /* HERO */
+  .hero { min-height:100vh; padding-top:66px; background:var(--blue); position:relative; overflow:hidden; display:flex; align-items:center; }
+  .hero-geo { position:absolute; inset:0; pointer-events:none; background-image: radial-gradient(ellipse at 72% 40%, rgba(255,255,255,.07) 0%, transparent 55%), radial-gradient(ellipse at 15% 80%, rgba(192,39,45,.15) 0%, transparent 50%); }
+  .hero-grid { position:absolute; inset:0; pointer-events:none; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size:56px 56px; }
+  .hero-inner { position:relative; z-index:2; width:100%; max-width:1180px; margin:0 auto; padding:80px 5%; display:grid; grid-template-columns:1fr 400px; gap:60px; align-items:center; }
+  .hero-tag { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:500; color:rgba(255,255,255,.7); letter-spacing:.1em; text-transform:uppercase; margin-bottom:22px; }
+  .hero-tag-dot { width:7px; height:7px; border-radius:50%; background:var(--red); animation:pulse 2s ease-in-out infinite; }
+  .hero h1 { font-family:var(--font-serif); font-size:clamp(40px,5.5vw,66px); line-height:1.08; color:var(--white); margin-bottom:22px; letter-spacing:-.01em; }
+  .hero h1 em { font-style:italic; color:var(--red); }
+  .hero-sub { font-size:16.5px; color:rgba(255,255,255,.62); line-height:1.72; max-width:490px; font-weight:300; margin-bottom:34px; }
+  .hero-btns { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:46px; }
+  .btn-primary { background:var(--red); color:var(--white); font-size:15px; font-weight:600; padding:13px 28px; border-radius:var(--r-md); text-decoration:none; border:none; cursor:pointer; letter-spacing:.02em; transition:all .22s; display:inline-block; }
+  .btn-primary:hover { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(192,39,45,.4); }
+  .btn-ghost { background:transparent; color:var(--white); font-size:15px; font-weight:400; padding:13px 28px; border-radius:var(--r-md); text-decoration:none; border:1px solid rgba(255,255,255,.28); cursor:pointer; transition:all .22s; display:inline-block; }
+  .btn-ghost:hover { border-color:rgba(255,255,255,.65); background:rgba(255,255,255,.07); }
+  .hero-stats { display:flex; gap:30px; padding-top:30px; border-top:1px solid rgba(255,255,255,.12); flex-wrap:wrap; }
+  .stat-num { font-family:var(--font-serif); font-size:27px; color:var(--white); display:block; line-height:1; margin-bottom:4px; }
+  .stat-lbl { font-size:11px; color:rgba(255,255,255,.48); text-transform:uppercase; letter-spacing:.08em; }
+
+  .hero-widget { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.13); border-radius:var(--r-xl); padding:30px 28px; animation:floatY 6s ease-in-out infinite; }
+  .hw-title { font-family:var(--font-serif); font-size:19px; color:var(--white); margin-bottom:18px; }
+  .hw-field { margin-bottom:13px; }
+  .hw-label { font-size:10.5px; font-weight:500; color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px; display:block; }
+  .hw-select, .hw-input { width:100%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.13); border-radius:var(--r-sm); padding:10px 13px; font-size:13.5px; color:rgba(255,255,255,.87); font-family:var(--font-sans); outline:none; transition:border-color .2s; }
+  .hw-select:focus, .hw-input:focus { border-color:rgba(255,255,255,.4); }
+  .hw-select option { background:var(--blue-dark); }
+  .hw-btn { width:100%; background:var(--red); color:var(--white); font-size:14px; font-weight:600; padding:12px; border-radius:var(--r-sm); border:none; cursor:pointer; margin-top:18px; letter-spacing:.03em; transition:all .2s; }
+  .hw-btn:hover { background:var(--red-dark); }
+  .hw-note { font-size:11px; color:rgba(255,255,255,.38); text-align:center; margin-top:9px; }
+
+  /* LAYOUT */
+  .wrap { max-width:1180px; margin:0 auto; }
+  .eyebrow { font-size:11.5px; font-weight:500; color:var(--red); letter-spacing:.1em; text-transform:uppercase; margin-bottom:11px; display:block; }
+  .sec-title { font-family:var(--font-serif); font-size:clamp(26px,3.5vw,42px); color:var(--text-dark); line-height:1.14; margin-bottom:14px; }
+  .sec-sub { font-size:15.5px; color:var(--text-mid); line-height:1.72; max-width:540px; font-weight:300; margin-bottom:48px; }
+
+  /* SERVICES */
+  .services { background:var(--white); padding:96px 5%; }
+  .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .svc-card { background:var(--off-white); border-radius:var(--r-lg); padding:34px 26px; border:1px solid var(--border); transition:all .28s ease; position:relative; overflow:hidden; }
+  .svc-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--red), var(--blue)); transform:scaleX(0); transform-origin:left; transition:transform .3s ease; }
+  .svc-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-md); background:var(--white); }
+  .svc-card:hover::after { transform:scaleX(1); }
+  .svc-icon { width:48px; height:48px; border-radius:var(--r-md); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:18px; }
+  .i-blue { background:var(--blue-light); }
+  .i-red  { background:var(--red-light); }
+  .i-mix  { background:#EAF2FB; }
+  .svc-card h3 { font-family:var(--font-serif); font-size:21px; color:var(--text-dark); margin-bottom:9px; }
+  .svc-card p { font-size:14.5px; color:var(--text-mid); line-height:1.66; font-weight:300; margin-bottom:18px; }
+  .svc-link { font-size:13.5px; font-weight:500; color:var(--blue); text-decoration:none; display:inline-flex; align-items:center; gap:5px; transition:gap .2s; }
+  .svc-link:hover { gap:9px; color:var(--blue-dark); }
+
+  /* LOANS */
+  .loans { background:var(--blue); padding:96px 5%; position:relative; overflow:hidden; }
+  .loans::before { content:''; position:absolute; top:-80px; right:-80px; width:480px; height:480px; background:radial-gradient(circle, rgba(192,39,45,.18) 0%, transparent 68%); pointer-events:none; }
+  .loans .eyebrow { color:rgba(255,255,255,.6); }
+  .loans .sec-title { color:var(--white); }
+  .loans .sec-sub { color:rgba(255,255,255,.52); }
+  .pills { display:grid; grid-template-columns:repeat(6,1fr); gap:11px; margin-bottom:30px; }
+  .pill { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.13); border-radius:100px; padding:12px 14px; text-align:center; font-size:13.5px; font-weight:500; color:rgba(255,255,255,.82); transition:all .2s; cursor:default; }
+  .pill:hover { background:rgba(192,39,45,.28); border-color:rgba(192,39,45,.6); color:var(--white); }
+  .loans-note { font-size:14.5px; color:rgba(255,255,255,.48); line-height:1.72; margin-bottom:26px; font-weight:300; max-width:560px; }
+  .btn-outline-white { display:inline-block; background:transparent; color:rgba(255,255,255,.82); font-size:13.5px; font-weight:500; padding:11px 22px; border-radius:var(--r-md); border:1px solid rgba(255,255,255,.22); text-decoration:none; transition:all .2s; }
+  .btn-outline-white:hover { border-color:rgba(255,255,255,.55); background:rgba(255,255,255,.07); }
+
+
+  .process { background:var(--off-white); padding:96px 5%; }
+  .process-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
+  .steps { display:flex; flex-direction:column; margin-top:36px; }
+  .step { display:flex; gap:18px; padding:22px 0; border-bottom:1px solid var(--border); }
+  .step:last-child { border-bottom:none; }
+  .step-num { width:38px; height:38px; border-radius:50%; background:var(--blue); color:var(--white); font-family:var(--font-serif); font-size:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+  .step h4 { font-size:16px; font-weight:600; color:var(--text-dark); margin-bottom:5px; }
+  .step p { font-size:13.5px; color:var(--text-mid); line-height:1.65; font-weight:300; }
+  .step-note { margin-top:24px; padding:15px 18px; background:var(--white); border-left:3px solid var(--red); border-radius:0 var(--r-sm) var(--r-sm) 0; font-size:13.5px; color:var(--text-mid); font-style:italic; }
+
+  .timeline-card { background:var(--white); border-radius:var(--r-xl); padding:36px 32px; box-shadow:var(--shadow-md); border:1px solid var(--border); }
+  .tl-title { font-family:var(--font-serif); font-size:20px; color:var(--text-dark); margin-bottom:22px; }
+  .tl-row { display:flex; align-items:center; gap:11px; margin-bottom:14px; }
+  .tl-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .dot-done   { background:var(--blue); }
+  .dot-active { background:var(--red); box-shadow:0 0 0 4px rgba(192,39,45,.18); }
+  .dot-next   { background:var(--border); border:2px solid var(--text-muted); }
+  .tl-label { font-size:13.5px; color:var(--text-dark); flex:1; }
+  .tl-badge { font-size:11px; padding:3px 10px; border-radius:100px; font-weight:500; flex-shrink:0; }
+  .b-done   { background:var(--blue-light); color:var(--blue-dark); }
+  .b-active { background:var(--red-light); color:var(--red-dark); }
+  .b-next   { background:var(--off-white); color:var(--text-muted); border:1px solid var(--border); }
+  .tl-divider { width:1px; height:16px; background:var(--border); margin:0 0 0 4px; }
+  .tl-footer { margin-top:22px; padding-top:18px; border-top:1px solid var(--border); display:flex; align-items:center; gap:12px; }
+  .tl-badge-dark { background:var(--blue); color:var(--white); font-size:12px; padding:6px 14px; border-radius:100px; font-weight:500; }
+  .tl-footer-txt { font-size:12.5px; color:var(--text-muted); }
+
+  /* REVIEWS */
+  .reviews { background:var(--blue-light); padding:96px 5%; }
+  .reviews-hdr { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:48px; flex-wrap:wrap; gap:20px; }
+  .reviews-hdr .sec-sub { margin-bottom:0; }
+  .rating-block { text-align:right; }
+  .rating-num { font-family:var(--font-serif); font-size:40px; color:var(--text-dark); line-height:1; }
+  .rating-stars { color:var(--red); font-size:18px; margin:3px 0; }
+  .rating-lbl { font-size:11.5px; color:var(--text-muted); }
+  .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .review-card { background:var(--white); border-radius:var(--r-lg); padding:26px 22px; border:1px solid var(--border); transition:all .28s; }
+  .review-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-sm); }
+  .r-stars { color:var(--red); font-size:15px; letter-spacing:2px; margin-bottom:12px; }
+  .r-text { font-size:14.5px; color:var(--text-dark); line-height:1.7; font-weight:300; font-style:italic; margin-bottom:18px; }
+  .r-footer { display:flex; align-items:center; gap:11px; padding-top:14px; border-top:1px solid var(--border); }
+  .r-avatar { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; flex-shrink:0; }
+  .av-1 { background:var(--blue-light); color:var(--blue-dark); }
+  .av-2 { background:var(--red-light); color:var(--red-dark); }
+  .av-3 { background:#EAF2FB; color:var(--blue); }
+  .r-name { font-size:13.5px; font-weight:600; color:var(--text-dark); display:block; }
+  .r-loc { font-size:11.5px; color:var(--text-muted); }
+
+  /* TEAM */
+  .team { background:var(--white); padding:96px 5%; }
+  .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:48px; }
+  .team-card { background:var(--off-white); border-radius:var(--r-lg); padding:20px 18px; border:1px solid var(--border); display:flex; align-items:center; gap:14px; transition:all .22s; text-decoration:none; }
+  .team-card:hover { border-color:var(--red); box-shadow:var(--shadow-sm); background:var(--white); transform:translateX(3px); }
+  .t-av { width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600; flex-shrink:0; font-family:var(--font-serif); background:var(--blue-light); color:var(--blue-dark); }
+  .t-av.red { background:var(--red-light); color:var(--red-dark); }
+  .t-info { flex:1; min-width:0; }
+  .t-name { font-size:14.5px; font-weight:600; color:var(--text-dark); display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .t-role { font-size:11.5px; color:var(--text-muted); }
+  .t-arrow { font-size:15px; color:var(--red); opacity:0; transition:opacity .2s; }
+  .team-card:hover .t-arrow { opacity:1; }
+
+  /* FAQ */
+  .faq { background:var(--off-white); padding:96px 5%; }
+  .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; margin-top:48px; }
+  .faq-item { padding:22px 0; border-bottom:1px solid var(--border); cursor:pointer; }
+  .faq-item:first-child { padding-top:0; }
+  .faq-q { font-size:15.5px; font-weight:500; color:var(--text-dark); display:flex; justify-content:space-between; align-items:center; gap:14px; }
+  .faq-icon { width:24px; height:24px; border-radius:50%; background:var(--blue-light); display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--blue); flex-shrink:0; transition:all .2s; user-select:none; }
+  .faq-a { font-size:13.5px; color:var(--text-mid); line-height:1.7; font-weight:300; max-height:0; overflow:hidden; transition:max-height .3s ease, padding-top .3s; }
+  .faq-item.open .faq-a { max-height:200px; padding-top:11px; }
+  .faq-item.open .faq-icon { background:var(--red); color:var(--white); transform:rotate(45deg); }
+
+  .faq-box { background:var(--white); border-radius:var(--r-xl); padding:36px 32px; border:1px solid var(--border); position:sticky; top:86px; }
+  .faq-box h3 { font-family:var(--font-serif); font-size:24px; color:var(--text-dark); margin-bottom:11px; line-height:1.22; }
+  .faq-box p { font-size:13.5px; color:var(--text-mid); line-height:1.7; margin-bottom:22px; font-weight:300; }
+  .faq-contact { display:flex; align-items:center; gap:11px; margin-bottom:11px; font-size:13.5px; color:var(--text-mid); }
+  .faq-icon-box { width:30px; height:30px; border-radius:7px; background:var(--blue-light); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+  .faq-link { color:var(--blue); font-weight:500; text-decoration:none; }
+  .faq-link:hover { color:var(--blue-dark); text-decoration:underline; }
+
+  /* BOTTOM CTA */
+  .cta-section { background:var(--blue); padding:96px 5%; text-align:center; position:relative; overflow:hidden; }
+  .cta-section::before { content:''; position:absolute; inset:0; pointer-events:none; background-image: radial-gradient(ellipse at 25% 60%, rgba(192,39,45,.2) 0%, transparent 55%), radial-gradient(ellipse at 80% 40%, rgba(255,255,255,.06) 0%, transparent 55%); }
+  .cta-inner { position:relative; z-index:2; max-width:620px; margin:0 auto; }
+  .cta-inner h2 { font-family:var(--font-serif); font-size:clamp(30px,4vw,50px); color:var(--white); margin-bottom:14px; line-height:1.1; }
+  .cta-inner h2 em { color:var(--red); font-style:italic; }
+  .cta-inner p { font-size:16px; color:rgba(255,255,255,.52); line-height:1.72; margin-bottom:34px; font-weight:300; }
+  .cta-btns { display:flex; gap:13px; justify-content:center; flex-wrap:wrap; margin-bottom:26px; }
+  .cta-trust { font-size:11.5px; color:rgba(255,255,255,.28); letter-spacing:.05em; }
+
+  /* FOOTER */
+  footer { background:var(--white); padding:56px 5% 28px; border-top:3px solid var(--red); }
+  .footer-grid { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.6fr 1fr 1.5fr 1fr; gap:44px; padding-bottom:44px; border-bottom:1px solid var(--border); margin-bottom:28px; }
+  .f-logo-mark { width:38px; height:38px; background:var(--red); border-radius:7px; display:flex; align-items:center; justify-content:center; font-family:var(--font-serif); font-size:19px; color:var(--white); margin-bottom:13px; }
+  .f-brand { font-family:var(--font-serif); font-size:16px; color:var(--text-dark); margin-bottom:6px; }
+  .f-nmls { font-size:11.5px; color:var(--text-muted); margin-bottom:14px; }
+  .f-desc { font-size:12px; color:var(--text-mid); line-height:1.7; }
+  .f-col h4 { font-size:11px; font-weight:600; color:var(--text-muted); letter-spacing:.1em; text-transform:uppercase; margin-bottom:15px; }
+  .f-links { list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .f-links a { font-size:13.5px; color:var(--text-mid); text-decoration:none; transition:color .2s; }
+  .f-links a:hover { color:var(--red); }
+  .f-location { margin-bottom:18px; }
+  .f-location strong { font-size:12.5px; font-weight:600; color:var(--text-dark); display:block; margin-bottom:3px; }
+  .f-location p { font-size:12px; color:var(--text-mid); line-height:1.6; }
+  .f-location a { font-size:12px; color:var(--red); text-decoration:none; font-weight:500; }
+  .f-location a:hover { color:var(--red-dark); }
+  .f-hours p { font-size:13px; color:var(--text-mid); margin-bottom:8px; line-height:1.5; }
+  .f-hours strong { color:var(--text-dark); }
+  .footer-bottom { max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:11px; }
+  .footer-bottom p { font-size:11.5px; color:var(--text-muted); }
+  .f-bottom-links { display:flex; gap:18px; }
+  .f-bottom-links a { font-size:11.5px; color:var(--text-muted); text-decoration:none; transition:color .2s; }
+  .f-bottom-links a:hover { color:var(--blue); }
+  .footer-legal { max-width:1180px; margin:20px auto 0; font-size:11px; color:var(--text-muted); line-height:1.72; padding-top:18px; border-top:1px solid var(--border); }
+
+  @media(max-width:900px){
+    .hero-inner { grid-template-columns:1fr; }
+    .hero-widget { display:none; }
+    .svc-grid { grid-template-columns:1fr; }
+    .pills { grid-template-columns:repeat(3,1fr); }
+    .rates-grid { grid-template-columns:1fr; }
+    .process-grid { grid-template-columns:1fr; }
+    .reviews-grid { grid-template-columns:1fr; }
+    .team-grid { grid-template-columns:1fr 1fr; }
+    .faq-grid { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .nav-links { display:none; }
+  }
+  @media(max-width:580px){
+    .team-grid { grid-template-columns:1fr; }
+    .pills { grid-template-columns:repeat(2,1fr); }
+    .footer-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+<span class="logo-name"><span class="logo-name-text">Amer<span class="logo-i-star">&#305;<span class="logo-star">★</span></span>Dream</span><span class="logo-sub">Mortgage Group, LLC</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="loan-types.html">Loan types</a></li>
+    <li><a href="learning-center.html">Learning center</a></li>
+    <li><a href="checklist.html">Buyer checklist</a></li>
+    <li><a href="meet-the-team.html">Our team</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://www.ameridream.mortgage/?borrowerportal&siteid=5691082585" class="btn-portal">Client Login</a><a href="tel:4693624700" class="nav-phone">(469) 362-4700</a>
+    <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-red">Apply Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-geo"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag fade-up"><span class="hero-tag-dot"></span>Serving The Colony · Decatur · Bridgeport</div>
+      <h1 class="fade-up d1">Making <em>YOUR</em><br>American Dream<br>Come True.</h1>
+      <p class="hero-sub fade-up d2">Local mortgage experts helping North Texas families navigate every step — from pre-approval to closing day. No jargon. No runaround. Just honest guidance from people who live here too.</p>
+      <div class="hero-btns fade-up d3">
+        <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-primary">Get Pre-Approved</a>
+        <a href="#loans" class="btn-ghost">See Our Loan Options</a>
+      </div>
+      <div class="hero-stats fade-up d4">
+        <div><span class="stat-num">$500M+</span><span class="stat-lbl">Loans Closed</span></div>
+        <div><span class="stat-num">4.9 ★</span><span class="stat-lbl">Google Rating</span></div>
+        <div><span class="stat-num">15+ yrs</span><span class="stat-lbl">Serving North Texas</span></div>
+      </div>
+    </div>
+    <div class="hero-widget fade-up d5">
+      <div class="hw-title">Quick pre-approval check</div>
+      <div class="hw-field"><span class="hw-label">I'm looking to</span><select class="hw-select"><option>Buy a home</option><option>Refinance</option><option>New construction</option></select></div>
+      <div class="hw-field"><span class="hw-label">Estimated home price</span><input class="hw-input" type="text" value="$350,000" /></div>
+      <div class="hw-field"><span class="hw-label">Credit score range</span><select class="hw-select"><option>Excellent (740+)</option><option>Good (680–739)</option><option>Fair (620–679)</option><option>Below 620</option></select></div>
+      <button class="hw-btn" onclick="window.open('https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545')">Check My Options →</button>
+      <p class="hw-note">No credit pull · No commitment · 2 minutes</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <span class="eyebrow">What we do</span>
+    <h2 class="sec-title">Whether you're buying, building,<br>or refinancing — we've got you.</h2>
+    <p class="sec-sub">AmeriDream guides North Texas families through every type of home loan, from first-time purchases to investment properties.</p>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-icon i-blue">🏠</div><h3>Buy a home</h3><p>Whether it's your first home or your fifth, we'll match you with the right loan and walk you through every step — from offer to closing. Offering great rates and exceptional service every step of the way.</p><a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="svc-link">Get pre-approved <span>→</span></a></div>
+      <div class="svc-card"><div class="svc-icon i-red">🔄</div><h3>Refinance</h3><p>Lower your monthly payment, shorten your term, or tap into your home's equity. Let's find out what you could be saving.</p><a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="svc-link">Check my savings <span>→</span></a></div>
+      <div class="svc-card"><div class="svc-icon i-mix">🏗️</div><h3>New construction</h3><p>Building your dream home? We offer construction-to-permanent financing so you have one seamless loan from groundbreak to move-in.</p><a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="svc-link">Get started <span>→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOANS -->
+<section class="loans" id="loans">
+  <div class="wrap">
+    <span class="eyebrow">Loan programs</span>
+    <h2 class="sec-title">We have a loan for<br>your situation.</h2>
+    <p class="sec-sub">From first-time buyers to seasoned investors, we work with a wide range of loan programs to find the best fit for your goals.</p>
+    <div class="pills">
+      <div class="pill">Conventional</div><div class="pill">FHA</div><div class="pill">VA</div>
+      <div class="pill">USDA</div><div class="pill">Jumbo</div><div class="pill">Non-Conforming</div>
+    </div>
+    <p class="loans-note">Not sure which one is right for you? Our loan officers will explain your options in plain English — no pressure, no obligation.</p>
+    <a href="loan-types.html" class="btn-outline-white">Compare loan types →</a>
+  </div>
+</section>
+
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="process-grid">
+      <div>
+        <span class="eyebrow">The process</span>
+        <h2 class="sec-title">From application<br>to keys.</h2>
+        <p class="sec-sub" style="margin-bottom:0;">We've streamlined the process so you always know where you stand — and there's never a surprise.</p>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div><h4>Apply in minutes</h4><p>Start your application online — secure, simple, and no commitment required.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div><h4>Talk to your loan officer</h4><p>A local expert reviews your application and walks you through your options.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div><h4>Get pre-approved</h4><p>We'll issue your pre-approval letter so you can shop with confidence.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div><h4>Close &amp; celebrate</h4><p>We guide you to the closing table — and stay in touch long after the keys are yours.</p></div></div>
+        </div>
+        <div class="step-note">Most clients receive their pre-approval letter within 24–48 hours of submitting their application.</div>
+      </div>
+      <div>
+        <div class="timeline-card">
+          <div class="tl-title">Your loan journey</div>
+          <div class="tl-row"><div class="tl-dot dot-done"></div><span class="tl-label">Application submitted</span><span class="tl-badge b-done">Complete</span></div>
+          <div class="tl-divider"></div>
+          <div class="tl-row"><div class="tl-dot dot-done"></div><span class="tl-label">Loan officer assigned</span><span class="tl-badge b-done">Complete</span></div>
+          <div class="tl-divider"></div>
+          <div class="tl-row"><div class="tl-dot dot-active"></div><span class="tl-label">Pre-approval review</span><span class="tl-badge b-active">In progress</span></div>
+          <div class="tl-divider"></div>
+          <div class="tl-row"><div class="tl-dot dot-next"></div><span class="tl-label">Pre-approval letter issued</span><span class="tl-badge b-next">Up next</span></div>
+          <div class="tl-divider"></div>
+          <div class="tl-row"><div class="tl-dot dot-next"></div><span class="tl-label">Home search</span><span class="tl-badge b-next">Upcoming</span></div>
+          <div class="tl-divider"></div>
+          <div class="tl-row"><div class="tl-dot dot-next"></div><span class="tl-label">Underwriting &amp; closing</span><span class="tl-badge b-next">Upcoming</span></div>
+          <div class="tl-footer"><span class="tl-badge-dark">Avg. 22 days to close</span><span class="tl-footer-txt">From application to closing</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="reviews-hdr">
+      <div>
+        <span class="eyebrow">Client reviews</span>
+        <h2 class="sec-title">Don't take our word for it.</h2>
+        <p class="sec-sub">Here's what North Texas homeowners say about working with AmeriDream.</p>
+      </div>
+      <div class="rating-block">
+        <div class="rating-num">4.9</div>
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-lbl">200+ Google reviews</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"They made the entire process so smooth. We closed in under 3 weeks and our loan officer was available every time we had a question. Couldn't recommend them more."</p><div class="r-footer"><div class="r-avatar av-1">SR</div><div><span class="r-name">Sarah R.</span><span class="r-loc">The Colony, TX</span></div></div></div>
+      <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"As a first-time buyer I was nervous about everything. AmeriDream walked me through every step. By closing day it felt like we'd known them for years."</p><div class="r-footer"><div class="r-avatar av-2">JM</div><div><span class="r-name">James M.</span><span class="r-loc">Decatur, TX</span></div></div></div>
+      <div class="review-card"><div class="r-stars">★★★★★</div><p class="r-text">"We've used AmeriDream twice — once to buy and once to refinance. Both times were seamless. They genuinely care about getting you the best deal."</p><div class="r-footer"><div class="r-avatar av-3">ML</div><div><span class="r-name">Maria &amp; Tom L.</span><span class="r-loc">Bridgeport, TX</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="wrap">
+    <span class="eyebrow">Meet the team</span>
+    <h2 class="sec-title">Real people. Local experts.</h2>
+    <p class="sec-sub">Our loan originators are based right here in North Texas. They know the market, the neighborhoods, and they're here to help — not just to close a deal.</p>
+    <div class="team-grid">
+      <a href="https://www.teamjessehomeloans.com" class="team-card" target="_blank"><div class="t-av">JW</div><div class="t-info"><span class="t-name">Jesse Woskowicz</span><span class="t-role">Loan Originator</span></div><span class="t-arrow">→</span></a>
+      <a href="http://www.kevinamg.com" class="team-card" target="_blank"><div class="t-av red">KS</div><div class="t-info"><span class="t-name">Kevin Shaw</span><span class="t-role">Loan Originator</span></div><span class="t-arrow">→</span></a>
+      <a href="http://www.jacobamg.com" class="team-card" target="_blank"><div class="t-av">JM</div><div class="t-info"><span class="t-name">Jacob Mejia</span><span class="t-role">Loan Originator</span></div><span class="t-arrow">→</span></a>
+      <a href="https://bradamg.com" class="team-card" target="_blank"><div class="t-av red">BH</div><div class="t-info"><span class="t-name">Brad Hunter</span><span class="t-role">Loan Originator</span></div><span class="t-arrow">→</span></a>
+      <a href="https://sheaamg.com" class="team-card" target="_blank"><div class="t-av">SA</div><div class="t-info"><span class="t-name">Shea Armstrong</span><span class="t-role">Loan Originator</span></div><span class="t-arrow">→</span></a>
+      <a href="https://leslieamg.com" class="team-card" target="_blank"><div class="t-av red">LR</div><div class="t-info"><span class="t-name">Leslie Riccitelli</span><span class="t-role">Loan Originator</span></div><span class="t-arrow">→</span></a>
+      <a href="https://shaleyamg.com" class="team-card" target="_blank"><div class="t-av">ST</div><div class="t-info"><span class="t-name">Shaley Tate</span><span class="t-role">Loan Originator</span></div><span class="t-arrow">→</span></a>
+      <a href="https://jakeamg.com" class="team-card" target="_blank"><div class="t-av red">JM</div><div class="t-info"><span class="t-name">Jake Martinez</span><span class="t-role">Loan Originator</span></div><span class="t-arrow">→</span></a>
+      <a href="https://mendaamg.com" class="team-card" target="_blank"><div class="t-av">MH</div><div class="t-info"><span class="t-name">Menda Huddleston</span><span class="t-role">Loan Originator</span></div><span class="t-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <span class="eyebrow">Common questions</span>
+    <h2 class="sec-title">Honest answers to<br>your biggest questions.</h2>
+    <div class="faq-grid">
+      <div>
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">How long does it take to get pre-approved?<span class="faq-icon">+</span></div><div class="faq-a">Most clients receive their pre-approval letter within 24–48 hours of submitting their application. The more complete your application, the faster we can move.</div></div>
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What credit score do I need to qualify?<span class="faq-icon">+</span></div><div class="faq-a">It depends on the loan type. FHA loans can qualify with scores as low as 580, while conventional loans typically require 620 or higher. Our team will help you find the best program for your situation.</div></div>
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">How much do I need for a down payment?<span class="faq-icon">+</span></div><div class="faq-a">VA and USDA loans can require 0% down. FHA loans start at 3.5%, and conventional loans can be as low as 3% for qualified buyers. We'll walk you through what makes sense for your budget.</div></div>
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Do you only lend in Texas?<span class="faq-icon">+</span></div><div class="faq-a">We are based in North Texas with offices in The Colony, Decatur, and Bridgeport. Contact us to confirm whether we can serve your specific area.</div></div>
+        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Can I get pre-approved before I find a house?<span class="faq-icon">+</span></div><div class="faq-a">Absolutely — in fact, we recommend it. A pre-approval letter shows sellers you're a serious buyer and gives you a clear budget to shop within.</div></div>
+      </div>
+      <div>
+        <div class="faq-box">
+          <h3>Have a question we didn't answer?</h3>
+          <p>Our loan officers are real people based right here in North Texas — reach out and you'll hear back fast.</p>
+          <div class="faq-contact"><div class="faq-icon-box">📞</div><a href="tel:4693624700" class="faq-link">(469) 362-4700</a></div>
+          <div class="faq-contact"><div class="faq-icon-box">📍</div><span>The Colony · Decatur · Bridgeport</span></div>
+          <div class="faq-contact" style="margin-bottom:24px;"><div class="faq-icon-box">🕐</div><span>Mon–Fri 9am–5pm · Sat by appt</span></div>
+          <a href="contact.html" class="btn-primary" style="font-size:14px;padding:12px 22px;">Send us a message</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Ready to take<br>the <em>first step?</em></h2>
+    <p>No obligation. No pressure. Just honest guidance from a local team that genuinely cares about getting you into the right home at the right rate.</p>
+    <div class="cta-btns">
+      <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-primary" style="font-size:16px;padding:15px 32px;">Apply Now</a>
+      <a href="tel:4693624700" class="btn-ghost" style="font-size:16px;padding:15px 32px;">Talk to a Loan Officer</a>
+    </div>
+    <div class="cta-trust">Equal Housing Lender &nbsp;·&nbsp; NMLS #275209 &nbsp;·&nbsp; Licensed in Texas</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+<div class="f-brand">AmeriDream Mortgage Group, LLC</div>
+      <div class="f-nmls">NMLS #275209 · Equal Housing Lender</div>
+      <div class="f-desc">Making YOUR American Dream come true — one home loan at a time. Serving North Texas families since 2009.</div>
+    </div>
+    <div>
+      <h4>Quick links</h4>
+      <ul class="f-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="loan-types.html">Loan types</a></li>
+        <li><a href="learning-center.html">Learning center</a></li>
+    <li><a href="checklist.html">Buyer checklist</a></li>
+        <li><a href="learning-center.html#calculator">Mortgage calculator</a></li>
+        <li><a href="meet-the-team.html">Meet the team</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+        <li><a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545">Apply now</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Locations</h4>
+      <div class="f-location"><strong>The Colony (Main)</strong><p>3700 Standridge Dr, Ste 101<br>The Colony, TX 75056</p><a href="tel:4693624700">(469) 362-4700</a></div>
+      <div class="f-location"><strong>Decatur · NMLS #1652928</strong><p>207 W Main Street<br>Decatur, TX 76234</p><a href="tel:9406272034">(940) 627-2034</a></div>
+      <div class="f-location"><strong>Bridgeport · NMLS #2286544</strong><p>1005 Stevens St<br>Bridgeport, TX 76426</p><a href="tel:9406440024">(940) 644-0024</a></div>
+    </div>
+    <div>
+      <h4>Hours</h4>
+      <div class="f-hours">
+        <p>Mon – Fri<br><strong>9:00 am – 5:00 pm</strong></p>
+        <p>Saturday<br><strong>By appointment</strong></p>
+        <p>Sunday<br><strong>By appointment</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 AmeriDream Mortgage Group, LLC. All rights reserved.</p>
+    <div class="f-bottom-links">
+      <a href="https://ameridreammtg.com/privacy-policy">Privacy Policy</a>
+      <a href="https://ameridreammtg.com/file-a-complaint">File a Complaint</a>
+      <a href="https://www.nmlsconsumeraccess.org/">NMLS Consumer Access</a>
+    </div>
+  </div>
+  <div class="footer-legal">AmeriDream Mortgage Group, LLC (NMLS #275209) is an Equal Housing Lender. This is not a commitment to lend or extend credit. Programs, rates, terms and conditions are subject to change without notice. Terms and conditions apply. All rights reserved. Consult a tax adviser for more information and tax deductions.</div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+    const open = el.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!open) el.classList.add('open');
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.svc-card, .review-card, .step, .pill').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    io.observe(el);
+  });
+
+  // Team cards: always visible, just animate subtly on hover via CSS
+  document.querySelectorAll('.team-card').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+</script>
+</body>
+</html>

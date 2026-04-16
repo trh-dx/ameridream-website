@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Learning Center | AmeriDream Mortgage Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue:#1A5BA6;--blue-dark:#0D3D75;--blue-light:#E6F1FB;
+    --red:#C0272D;--red-dark:#9B1F24;--red-light:#FDEAEA;
+    --white:#FFFFFF;--off-white:#F5F8FC;--border:#D8E8F4;
+    --text-dark:#0D2E54;--text-mid:#355070;--text-muted:#7A98B8;
+    --font-serif:'DM Serif Display',Georgia,serif;--font-sans:'DM Sans',system-ui,sans-serif;
+    --r-sm:6px;--r-md:12px;--r-lg:20px;--r-xl:32px;
+    --shadow-sm:0 2px 12px rgba(13,61,117,0.07);--shadow-md:0 8px 32px rgba(13,61,117,0.12);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-sans);background:var(--off-white);color:var(--text-dark);line-height:1.6;overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;background:#FFFFFF;border-bottom:3px solid var(--red);box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo-mark{width:40px;height:40px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:17px;color:var(--white);}
+  .logo-name{font-family:var(--font-serif);font-size:22px;color:var(--white);display:flex;flex-direction:column;line-height:1.1;} .logo-sub{font-family:var(--font-sans);font-size:10px;font-weight:500;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-top:2px;}
+  
+  .logo-i-star{position:relative;display:inline-block;}.logo-star{position:absolute;top:-1px;left:50%;transform:translateX(-50%);color:#C0272D;font-size:9px;line-height:1;}
+  .nav-links{display:flex;align-items:center;gap:2px;list-style:none;}
+  .nav-links a{font-size:13px;color:var(--blue);font-weight:500;text-decoration:none;padding:7px 14px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--blue-pale);transition:all .18s;}
+  .nav-links a:hover{color:var(--blue-dark);background:var(--blue-light);border-color:var(--blue);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .nav-phone{font-size:13px;color:var(--blue);font-weight:500;text-decoration:none;}
+  .btn-red{background:var(--red);color:var(--white);font-size:13px;font-weight:600;padding:8px 20px;border-radius:var(--r-sm);text-decoration:none;border:none;cursor:pointer;letter-spacing:.03em;transition:all .2s;display:inline-block;}
+  .btn-red:hover{background:var(--red-dark);}
+
+  .page-hero{padding:120px 5% 72px;background:var(--blue);position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 80% 50%,rgba(192,39,45,.15) 0%,transparent 60%),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:100% 100%,56px 56px,56px 56px;}
+  .page-hero-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto;}
+  .breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:14px;}
+  .breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none;}
+  .page-hero h1{font-family:var(--font-serif);font-size:clamp(36px,5vw,60px);color:var(--white);line-height:1.08;margin-bottom:16px;}
+  .page-hero h1 em{font-style:italic;color:var(--red);}
+  .page-hero p{font-size:17px;color:rgba(255,255,255,.62);line-height:1.72;max-width:560px;font-weight:300;}
+
+  .wrap{max-width:1180px;margin:0 auto;}
+  .eyebrow{font-size:11.5px;font-weight:500;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px;display:block;}
+  .sec-title{font-family:var(--font-serif);font-size:clamp(26px,3.5vw,40px);color:var(--text-dark);line-height:1.14;margin-bottom:14px;}
+
+  /* CALCULATOR */
+  .calc-section{padding:72px 5%;background:var(--white);}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:36px;}
+  .calc-inputs{display:flex;flex-direction:column;gap:20px;}
+  .calc-field label{font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;display:block;}
+  .calc-field input[type=range]{width:100%;margin:8px 0 4px;accent-color:var(--blue);}
+  .calc-field-vals{display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);}
+  .calc-field-current{font-size:18px;font-weight:600;color:var(--text-dark);margin-bottom:2px;display:block;}
+
+  .calc-result{background:var(--blue);border-radius:var(--r-xl);padding:36px 32px;color:var(--white);position:sticky;top:86px;}
+  .calc-result-label{font-size:12px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+  .calc-result-payment{font-family:var(--font-serif);font-size:56px;color:var(--white);line-height:1;margin-bottom:4px;}
+  .calc-result-sub{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:28px;}
+  .calc-breakdown{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;padding:20px;background:rgba(255,255,255,.07);border-radius:var(--r-md);}
+  .calc-breakdown-row{display:flex;justify-content:space-between;align-items:center;}
+  .calc-breakdown-label{font-size:13px;color:rgba(255,255,255,.6);}
+  .calc-breakdown-val{font-size:14px;font-weight:600;color:rgba(255,255,255,.9);}
+  .calc-cta{width:100%;background:var(--red);color:var(--white);font-size:14px;font-weight:600;padding:13px;border-radius:var(--r-md);border:none;cursor:pointer;font-family:var(--font-sans);transition:all .2s;}
+  .calc-cta:hover{background:var(--red-dark);}
+  .calc-disclaimer{font-size:11px;color:rgba(255,255,255,.3);margin-top:12px;line-height:1.6;}
+
+  /* BASICS */
+  .basics-section{padding:72px 5% 96px;}
+  .basics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;}
+  .basics-card{background:var(--white);border-radius:var(--r-lg);padding:28px 24px;border:1px solid var(--border);transition:all .25s;}
+  .basics-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm);}
+  .basics-num{width:36px;height:36px;border-radius:50%;background:var(--red);color:var(--white);font-family:var(--font-serif);font-size:16px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .basics-card h3{font-family:var(--font-serif);font-size:19px;color:var(--text-dark);margin-bottom:9px;}
+  .basics-card p{font-size:13.5px;color:var(--text-mid);line-height:1.68;font-weight:300;}
+
+  /* GLOSSARY */
+  .glossary-section{background:var(--blue-light);padding:72px 5%;}
+  .glossary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;}
+  .glossary-item{background:var(--white);border-radius:var(--r-md);padding:18px 20px;border:1px solid var(--border);}
+  .glossary-term{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:5px;}
+  .glossary-def{font-size:13px;color:var(--text-mid);line-height:1.65;font-weight:300;}
+
+  /* CTA */
+  .cta-banner{background:var(--off-white);padding:72px 5%;border-top:1px solid var(--border);}
+  .cta-banner-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;}
+  .cta-banner h2{font-family:var(--font-serif);font-size:clamp(24px,3vw,38px);color:var(--text-dark);margin-bottom:10px;}
+  .cta-banner p{font-size:15px;color:var(--text-mid);font-weight:300;line-height:1.65;}
+  .cta-btns{display:flex;gap:12px;flex-direction:column;align-items:flex-end;}
+  .btn-primary{background:var(--red);color:var(--white);font-size:15px;font-weight:600;padding:13px 28px;border-radius:var(--r-md);text-decoration:none;border:none;cursor:pointer;transition:all .22s;display:inline-block;}
+  .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--blue);font-size:14px;font-weight:500;padding:11px 22px;border-radius:var(--r-md);text-decoration:none;border:1.5px solid var(--blue);transition:all .2s;display:inline-block;}
+  .btn-outline:hover{background:var(--blue-light);}
+
+  footer{background:var(--blue-dark);padding:40px 5% 24px;}
+  .footer-bottom-bar{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-bottom-bar p{font-size:12px;color:rgba(255,255,255,.25);}
+  .f-links-bar{display:flex;gap:18px;}
+  .f-links-bar a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;}
+  .f-links-bar a:hover{color:rgba(255,255,255,.7);}
+  .footer-legal-bar{max-width:1180px;margin:16px auto 0;font-size:11px;color:rgba(255,255,255,.15);line-height:1.7;padding-top:16px;border-top:1px solid rgba(255,255,255,.05);}
+
+  @media(max-width:900px){.calc-grid{grid-template-columns:1fr;}.basics-grid{grid-template-columns:1fr;}.glossary-grid{grid-template-columns:1fr;}.nav-links{display:none;}.cta-banner-inner{grid-template-columns:1fr;}.cta-btns{align-items:flex-start;flex-direction:row;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><span class="logo-name">Amer<span class="logo-i-star">&#305;<span class="logo-star">★</span></span>Dream<span class="logo-sub">Mortgage Group, LLC</span></span></a>
+  <ul class="nav-links">
+    <li><a href="loan-types.html">Loan types</a></li>
+    <li><a href="learning-center.html">Learning center</a></li>
+    <li><a href="checklist.html">Buyer checklist</a></li>
+    <li><a href="meet-the-team.html">Our team</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://www.ameridream.mortgage/?borrowerportal&siteid=5691082585" class="btn-portal">Client Login</a><a href="tel:4693624700" class="nav-phone">(469) 362-4700</a>
+    <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-red">Apply Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Learning Center</div>
+    <h1>Everything you need to know<br><em>before you apply.</em></h1>
+    <p>Whether you're buying your first home or your fifth, our learning center gives you the tools and knowledge to make confident decisions — including a payment calculator, affordability calculator, step-by-step buying guide, and mortgage glossary.</p>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<section class="calc-section" id="calculator">
+  <div class="wrap">
+    <span class="eyebrow">Mortgage calculator</span>
+    <h2 class="sec-title">Estimate your monthly payment.</h2>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label>Home price</label>
+          <span class="calc-field-current" id="priceDisplay">$350,000</span>
+          <input type="range" min="50000" max="1500000" step="5000" value="350000" id="price" oninput="updateCalc()" />
+          <div class="calc-field-vals"><span>$50k</span><span>$1.5M</span></div>
+        </div>
+        <div class="calc-field">
+          <label>Down payment</label>
+          <span class="calc-field-current" id="downDisplay">$70,000 (20%)</span>
+          <input type="range" min="3" max="40" step="1" value="20" id="down" oninput="updateCalc()" />
+          <div class="calc-field-vals"><span>3%</span><span>40%</span></div>
+        </div>
+        <div class="calc-field">
+          <label>Interest rate</label>
+          <span class="calc-field-current" id="rateDisplay">6.8%</span>
+          <input type="range" min="3" max="12" step="0.1" value="6.8" id="rate" oninput="updateCalc()" />
+          <div class="calc-field-vals"><span>3%</span><span>12%</span></div>
+        </div>
+        <div class="calc-field">
+          <label>Loan term</label>
+          <span class="calc-field-current" id="termDisplay">30 years</span>
+          <input type="range" min="10" max="30" step="5" value="30" id="term" oninput="updateCalc()" />
+          <div class="calc-field-vals"><span>10 yrs</span><span>30 yrs</span></div>
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <div class="calc-result-label">Estimated monthly payment</div>
+        <div class="calc-result-payment" id="monthlyPayment">$1,838</div>
+        <div class="calc-result-sub">Principal &amp; interest only</div>
+        <div class="calc-breakdown">
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Loan amount</span><span class="calc-breakdown-val" id="loanAmt">$280,000</span></div>
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Down payment</span><span class="calc-breakdown-val" id="downAmt">$70,000</span></div>
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Total interest paid</span><span class="calc-breakdown-val" id="totalInterest">$381,677</span></div>
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Total cost</span><span class="calc-breakdown-val" id="totalCost">$731,677</span></div>
+        </div>
+        <button class="calc-cta" onclick="window.open('https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545')">Get an exact rate quote →</button>
+        <p class="calc-disclaimer">This is an estimate for illustration purposes only. Actual payments will vary based on credit score, loan type, taxes, insurance, and other factors. Contact us for an accurate quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFFORDABILITY CALCULATOR -->
+<section class="calc-section" id="affordability" style="background:var(--off-white);border-top:1px solid var(--border);">
+  <div class="wrap">
+    <span class="eyebrow">Affordability calculator</span>
+    <h2 class="sec-title">How much home can you afford?</h2>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label>Annual household income</label>
+          <span class="calc-field-current" id="incomeDisplay">$85,000</span>
+          <input type="range" min="30000" max="500000" step="5000" value="85000" id="income" oninput="updateAfford()" />
+          <div class="calc-field-vals"><span>$30k</span><span>$500k</span></div>
+        </div>
+        <div class="calc-field">
+          <label>Monthly debt payments</label>
+          <span class="calc-field-current" id="debtDisplay">$500 / month</span>
+          <input type="range" min="0" max="5000" step="50" value="500" id="debt" oninput="updateAfford()" />
+          <div class="calc-field-vals"><span>$0</span><span>$5,000</span></div>
+        </div>
+        <div class="calc-field">
+          <label>Down payment saved</label>
+          <span class="calc-field-current" id="savedDisplay">$20,000</span>
+          <input type="range" min="0" max="200000" step="1000" value="20000" id="saved" oninput="updateAfford()" />
+          <div class="calc-field-vals"><span>$0</span><span>$200k</span></div>
+        </div>
+        <div class="calc-field">
+          <label>Interest rate</label>
+          <span class="calc-field-current" id="affordRateDisplay">6.8%</span>
+          <input type="range" min="3" max="12" step="0.1" value="6.8" id="affordRate" oninput="updateAfford()" />
+          <div class="calc-field-vals"><span>3%</span><span>12%</span></div>
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <div class="calc-result-label">Estimated max home price</div>
+        <div class="calc-result-payment" id="maxPrice">$287,000</div>
+        <div class="calc-result-sub">Based on 28% front-end DTI guideline</div>
+        <div class="calc-breakdown">
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Max monthly payment</span><span class="calc-breakdown-val" id="maxPayment">$1,983</span></div>
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Max loan amount</span><span class="calc-breakdown-val" id="maxLoan">$267,000</span></div>
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Down payment</span><span class="calc-breakdown-val" id="affordDown">$20,000</span></div>
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Debt-to-income ratio</span><span class="calc-breakdown-val" id="dtiRatio">28%</span></div>
+        </div>
+        <button class="calc-cta" onclick="window.open('https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545')">Get pre-approved →</button>
+        <p class="calc-disclaimer">This estimate uses the 28% front-end DTI rule of thumb. Actual qualification depends on credit score, loan type, and lender guidelines. Talk to one of our loan officers for a precise figure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOME PURCHASE BASICS -->
+<section class="basics-section" id="basics">
+  <div class="wrap">
+    <span class="eyebrow">Home purchase basics</span>
+    <h2 class="sec-title">The home buying process,<br>step by step.</h2>
+    <div class="basics-grid">
+      <div class="basics-card"><div class="basics-num">1</div><h3>Check your credit</h3><p>Your credit score affects your interest rate and which loan programs you qualify for. Get a free copy of your credit report and review it for any errors before you apply.</p></div>
+      <div class="basics-card"><div class="basics-num">2</div><h3>Set your budget</h3><p>Determine how much house you can comfortably afford — not just the purchase price, but also taxes, insurance, HOA fees, and maintenance. A good rule of thumb: keep housing costs under 28% of gross income.</p></div>
+      <div class="basics-card"><div class="basics-num">3</div><h3>Get pre-approved</h3><p>A pre-approval letter from AmeriDream tells sellers you're serious and ready to buy. It shows your maximum loan amount and gives you a competitive edge when making offers.</p></div>
+      <div class="basics-card"><div class="basics-num">4</div><h3>Find your home</h3><p>Work with a real estate agent to find homes that fit your budget and lifestyle. Once you find the right one, your pre-approval makes your offer stronger from the start.</p></div>
+      <div class="basics-card"><div class="basics-num">5</div><h3>Make an offer</h3><p>Your agent will help you craft a competitive offer. Once accepted, you'll enter the contract period where inspections, appraisals, and final loan approval take place.</p></div>
+      <div class="basics-card"><div class="basics-num">6</div><h3>Close on your home</h3><p>At closing, you'll sign the final paperwork, pay your closing costs and down payment, and receive the keys. AmeriDream will be with you every step of the way to make sure it goes smoothly.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<section class="glossary-section" id="glossary">
+  <div class="wrap">
+    <span class="eyebrow">Mortgage glossary</span>
+    <h2 class="sec-title">Common terms explained.</h2>
+    <div class="glossary-grid">
+      <div class="glossary-item"><div class="glossary-term">Pre-approval</div><div class="glossary-def">A lender's conditional commitment to loan you a specific amount, based on a review of your income, assets, and credit. Stronger than pre-qualification.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Down payment</div><div class="glossary-def">The upfront cash you pay toward the purchase price of a home. The remainder is financed through your mortgage.</div></div>
+      <div class="glossary-item"><div class="glossary-term">APR (Annual Percentage Rate)</div><div class="glossary-def">The total yearly cost of your loan including interest and fees, expressed as a percentage. Useful for comparing loans side by side.</div></div>
+      <div class="glossary-item"><div class="glossary-term">PMI (Private Mortgage Insurance)</div><div class="glossary-def">Insurance that protects the lender if you default. Required on conventional loans with less than 20% down. Drops off once you hit 20% equity.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Escrow</div><div class="glossary-def">An account held by your lender where a portion of your monthly payment is set aside to cover property taxes and homeowner's insurance.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Closing costs</div><div class="glossary-def">Fees paid at the closing of a real estate transaction. Typically 2–5% of the loan amount and include appraisal, title, and origination fees.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Debt-to-income ratio (DTI)</div><div class="glossary-def">Your total monthly debt payments divided by your gross monthly income. Lenders use this to assess your ability to manage monthly payments.</div></div>
+      <div class="glossary-item"><div class="glossary-term">Fixed vs. adjustable rate</div><div class="glossary-def">A fixed rate stays the same for the life of the loan. An adjustable rate (ARM) starts lower but can change after an initial period based on market rates.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST PROMO -->
+<section style="background:var(--white);padding:72px 5%;border-top:1px solid var(--border);">
+  <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+    <div>
+      <span style="font-size:11.5px;font-weight:500;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px;display:block;">Free resource</span>
+      <h2 style="font-family:var(--font-serif);font-size:clamp(26px,3.5vw,40px);color:var(--text-dark);line-height:1.14;margin-bottom:14px;">First-time buyer checklist</h2>
+      <p style="font-size:15.5px;color:var(--text-mid);line-height:1.72;font-weight:300;margin-bottom:28px;">30 items covering everything from checking your credit to getting your keys — with an interactive tracker so you always know where you stand in the process.</p>
+      <a href="checklist.html" style="background:var(--red);color:var(--white);font-size:15px;font-weight:600;padding:13px 28px;border-radius:12px;text-decoration:none;display:inline-block;transition:all .22s;">Open the checklist →</a>
+    </div>
+    <div style="background:var(--off-white);border-radius:20px;padding:32px;border:1px solid var(--border);">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--white);border-radius:10px;border:1px solid var(--border);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green, #2D7D5A);display:flex;align-items:center;justify-content:center;font-size:11px;color:white;font-weight:700;flex-shrink:0;">✓</div><span style="font-size:13.5px;color:var(--text-mid);text-decoration:line-through;opacity:.6;">Check your credit score</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--white);border-radius:10px;border:1px solid var(--border);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green, #2D7D5A);display:flex;align-items:center;justify-content:center;font-size:11px;color:white;font-weight:700;flex-shrink:0;">✓</div><span style="font-size:13.5px;color:var(--text-mid);text-decoration:line-through;opacity:.6;">Save for down payment</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--blue-light);border-radius:10px;border:1px solid var(--border);"><div style="width:20px;height:20px;border-radius:6px;border:2px solid var(--border);background:var(--white);flex-shrink:0;"></div><span style="font-size:13.5px;font-weight:500;color:var(--text-dark);">Get pre-approved ← You are here</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--white);border-radius:10px;border:1px solid var(--border);opacity:.5;"><div style="width:20px;height:20px;border-radius:6px;border:2px solid var(--border);background:var(--white);flex-shrink:0;"></div><span style="font-size:13.5px;color:var(--text-muted);">Choose a real estate agent</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--white);border-radius:10px;border:1px solid var(--border);opacity:.5;"><div style="width:20px;height:20px;border-radius:6px;border:2px solid var(--border);background:var(--white);flex-shrink:0;"></div><span style="font-size:13.5px;color:var(--text-muted);">Make a competitive offer</span></div>
+        <div style="text-align:center;font-size:12px;color:var(--text-muted);padding-top:4px;">+ 25 more items</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-banner-inner">
+    <div>
+      <h2>Still have questions?</h2>
+      <p>Our loan officers are happy to walk you through anything — no question is too basic, and there's never any pressure.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-primary">Apply now</a>
+      <a href="contact.html" class="btn-outline">Talk to us</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom-bar">
+    <p>© 2026 AmeriDream Mortgage Group, LLC · NMLS #275209 · Equal Housing Lender</p>
+    <div class="f-links-bar">
+      <a href="index.html">Home</a><a href="loan-types.html">Loan types</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://ameridreammtg.com/privacy-policy">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-legal-bar">AmeriDream Mortgage Group, LLC (NMLS #275209) is an Equal Housing Lender. This is not a commitment to lend or extend credit. Calculator results are estimates for illustration purposes only and do not constitute a loan offer or guarantee.</div>
+</footer>
+
+<script>
+  function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+  function updateCalc() {
+    const price = +document.getElementById('price').value;
+    const downPct = +document.getElementById('down').value;
+    const rate = +document.getElementById('rate').value;
+    const term = +document.getElementById('term').value;
+
+    const downAmt = price * downPct / 100;
+    const loan = price - downAmt;
+    const r = rate / 100 / 12;
+    const n = term * 12;
+    const monthly = r > 0 ? loan * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1) : loan / n;
+    const totalPaid = monthly * n;
+    const totalInt = totalPaid - loan;
+
+    document.getElementById('priceDisplay').textContent = fmt(price);
+    document.getElementById('downDisplay').textContent = fmt(downAmt) + ' (' + downPct + '%)';
+    document.getElementById('rateDisplay').textContent = rate.toFixed(1) + '%';
+    document.getElementById('termDisplay').textContent = term + ' years';
+    document.getElementById('monthlyPayment').textContent = fmt(monthly);
+    document.getElementById('loanAmt').textContent = fmt(loan);
+    document.getElementById('downAmt').textContent = fmt(downAmt);
+    document.getElementById('totalInterest').textContent = fmt(totalInt);
+    document.getElementById('totalCost').textContent = fmt(totalPaid + downAmt);
+  }
+
+  function updateAfford() {
+    const income = +document.getElementById('income').value;
+    const debt = +document.getElementById('debt').value;
+    const saved = +document.getElementById('saved').value;
+    const rate = +document.getElementById('affordRate').value;
+
+    const maxMonthly = (income / 12) * 0.28;
+    const backEnd = (income / 12) * 0.36 - debt;
+    const effectiveMax = Math.max(0, Math.min(maxMonthly, backEnd));
+
+    const r = rate / 100 / 12;
+    const n = 360;
+    const maxLoan = r > 0
+      ? effectiveMax * (Math.pow(1+r, n) - 1) / (r * Math.pow(1+r, n))
+      : effectiveMax * n;
+    const maxPrice = maxLoan + saved;
+    const dti = income > 0 ? Math.round((effectiveMax / (income / 12)) * 100) : 0;
+
+    document.getElementById('incomeDisplay').textContent = fmt(income) + ' / year';
+    document.getElementById('debtDisplay').textContent = fmt(debt) + ' / month';
+    document.getElementById('savedDisplay').textContent = fmt(saved);
+    document.getElementById('affordRateDisplay').textContent = rate.toFixed(1) + '%';
+    document.getElementById('maxPrice').textContent = fmt(maxPrice);
+    document.getElementById('maxPayment').textContent = fmt(effectiveMax) + ' / mo';
+    document.getElementById('maxLoan').textContent = fmt(maxLoan);
+    document.getElementById('affordDown').textContent = fmt(saved);
+    document.getElementById('dtiRatio').textContent = dti + '%';
+  }
+
+  updateCalc();
+  updateAfford();
+</script>
+</body>
+</html>

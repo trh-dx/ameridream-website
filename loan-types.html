@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Loan Types | AmeriDream Mortgage Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue:#1A5BA6;--blue-dark:#0D3D75;--blue-light:#E6F1FB;--blue-pale:#F0F7FF;
+    --red:#C0272D;--red-dark:#9B1F24;--red-light:#FDEAEA;
+    --white:#FFFFFF;--off-white:#F5F8FC;--border:#D8E8F4;
+    --text-dark:#0D2E54;--text-mid:#355070;--text-muted:#7A98B8;
+    --font-serif:'DM Serif Display',Georgia,serif;--font-sans:'DM Sans',system-ui,sans-serif;
+    --r-sm:6px;--r-md:12px;--r-lg:20px;--r-xl:32px;
+    --shadow-sm:0 2px 12px rgba(13,61,117,0.07);--shadow-md:0 8px 32px rgba(13,61,117,0.12);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-sans);background:var(--off-white);color:var(--text-dark);line-height:1.6;overflow-x:hidden;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;background:#FFFFFF;border-bottom:3px solid var(--red);box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo-mark{width:40px;height:40px;border-radius:8px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:17px;color:var(--white);}
+  .logo-name{display:flex;flex-direction:column;line-height:1.1;} .logo-name-text{font-family:var(--font-serif);font-size:30px;color:var(--blue);letter-spacing:.01em;white-space:nowrap;} .logo-sub{font-family:var(--font-sans);font-size:12px;font-weight:500;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-top:2px;white-space:nowrap;}
+  
+  .logo-i-star{position:relative;display:inline-block;}.logo-star{position:absolute;top:2px;left:50%;transform:translateX(-50%);color:#C0272D;font-size:8px;line-height:1;}
+  .nav-links{display:flex;align-items:center;gap:2px;list-style:none;}
+  .nav-links a{font-size:13px;color:var(--blue);font-weight:500;text-decoration:none;padding:7px 14px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--blue-pale);transition:all .18s;}
+  .nav-links a:hover{color:var(--blue-dark);background:var(--blue-light);border-color:var(--blue);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .nav-phone{font-size:13px;color:var(--text-dark);font-weight:500;text-decoration:none;}
+  .btn-red{background:var(--red);color:var(--white);font-size:13px;font-weight:600;padding:8px 20px;border-radius:var(--r-sm);text-decoration:none;border:none;cursor:pointer;letter-spacing:.03em;transition:all .2s;display:inline-block;}
+  .btn-portal{background:transparent;color:var(--blue);font-size:13px;font-weight:500;padding:7px 16px;border-radius:var(--r-sm);text-decoration:none;border:1.5px solid var(--blue);transition:all .2s;display:inline-block;}
+  .btn-portal:hover{background:var(--blue-light);}
+  .btn-red:hover{background:var(--red-dark);}
+
+  /* PAGE HERO */
+  .page-hero{padding:120px 5% 72px;background:var(--blue);position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 80% 50%,rgba(192,39,45,.18) 0%,transparent 60%),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:100% 100%,56px 56px,56px 56px;}
+  .page-hero-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto;}
+  .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:14px;}
+  .breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none;}
+  .breadcrumb a:hover{color:var(--white);}
+  .page-hero h1{font-family:var(--font-serif);font-size:clamp(36px,5vw,58px);color:var(--white);line-height:1.08;margin-bottom:16px;}
+  .page-hero h1 em{font-style:italic;color:var(--red);}
+  .page-hero p{font-size:17px;color:rgba(255,255,255,.7);line-height:1.72;max-width:560px;font-weight:300;}
+
+  /* FILTER BAR */
+  .filter-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0 5%;position:sticky;top:66px;z-index:90;box-shadow:var(--shadow-sm);}
+  .filter-inner{max-width:1180px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;padding:14px 0;}
+  .filter-btn{background:transparent;border:1.5px solid var(--border);color:var(--text-mid);font-size:13.5px;font-weight:500;padding:8px 20px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:var(--font-sans);}
+  .filter-btn:hover{border-color:var(--blue);color:var(--blue);}
+  .filter-btn.active{background:var(--blue);border-color:var(--blue);color:var(--white);}
+
+  /* LOAN ROWS */
+  .loans-section{padding:64px 5% 96px;max-width:1180px;margin:0 auto;}
+
+  .loan-row{background:var(--white);border-radius:var(--r-xl);border:1px solid var(--border);margin-bottom:24px;overflow:hidden;transition:box-shadow .25s;}
+  .loan-row:hover{box-shadow:var(--shadow-md);}
+
+  .loan-row-header{display:grid;grid-template-columns:280px 1fr;align-items:stretch;}
+
+  /* Left color panel */
+  .loan-color-panel{padding:36px 32px;display:flex;flex-direction:column;justify-content:space-between;}
+  .panel-blue{background:var(--blue);}
+  .panel-red{background:var(--red);}
+  .panel-mix{background:linear-gradient(160deg,var(--blue) 0%,var(--red-dark) 100%);}
+
+  .loan-tag{display:inline-block;font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;background:rgba(255,255,255,.2);color:var(--white);}
+  .loan-name{font-family:var(--font-serif);font-size:28px;color:var(--white);line-height:1.1;margin-bottom:8px;}
+  .loan-best{font-size:12px;color:rgba(255,255,255,.7);font-weight:400;line-height:1.5;}
+  .loan-best strong{color:var(--white);display:block;font-size:11px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;font-weight:600;}
+
+  /* Right content */
+  .loan-content{padding:36px 36px 36px 40px;border-left:1px solid var(--border);}
+  .loan-tagline{font-size:16px;color:var(--text-dark);line-height:1.6;font-weight:400;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+
+  /* Stats row */
+  .loan-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;}
+  .loan-stat{background:var(--off-white);border-radius:var(--r-md);padding:14px 16px;border:1px solid var(--border);}
+  .loan-stat-label{font-size:10.5px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;display:block;}
+  .loan-stat-val{font-size:18px;font-weight:600;color:var(--text-dark);line-height:1.2;}
+
+  /* Features */
+  .loan-features{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-bottom:28px;}
+  .loan-feature{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--text-mid);line-height:1.5;}
+  .loan-feature::before{content:'✓';color:var(--blue);font-weight:700;font-size:13px;flex-shrink:0;margin-top:1px;}
+  .panel-red ~ .loan-content .loan-feature::before{color:var(--red);}
+
+  .loan-actions{display:flex;gap:10px;}
+  .btn-primary{background:var(--red);color:var(--white);font-size:14px;font-weight:600;padding:12px 24px;border-radius:var(--r-md);text-decoration:none;border:none;cursor:pointer;letter-spacing:.02em;transition:all .22s;display:inline-block;}
+  .btn-primary:hover{background:var(--red-dark);transform:translateY(-1px);}
+  .btn-outline{background:transparent;color:var(--blue);font-size:14px;font-weight:500;padding:11px 22px;border-radius:var(--r-md);text-decoration:none;border:1.5px solid var(--blue);transition:all .2s;display:inline-block;}
+  .btn-outline:hover{background:var(--blue-light);}
+
+  /* COMPARISON TABLE */
+  .compare-section{background:var(--white);padding:72px 5%;border-top:1px solid var(--border);}
+  .compare-inner{max-width:1180px;margin:0 auto;}
+  .eyebrow{font-size:11.5px;font-weight:500;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px;display:block;}
+  .sec-title{font-family:var(--font-serif);font-size:clamp(26px,3.5vw,40px);color:var(--text-dark);line-height:1.14;margin-bottom:36px;}
+  .compare-table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+  .compare-table th{background:var(--blue);color:var(--white);font-size:13px;font-weight:600;padding:16px 18px;text-align:left;}
+  .compare-table th:first-child{background:var(--off-white);color:var(--text-muted);font-weight:500;}
+  .compare-table td{padding:14px 18px;font-size:14px;color:var(--text-dark);border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
+  .compare-table td:first-child{font-weight:600;color:var(--text-muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em;background:var(--off-white);}
+  .compare-table td:last-child{border-right:none;}
+  .compare-table tr:last-child td{border-bottom:none;}
+  .compare-table tr:nth-child(even) td:not(:first-child){background:var(--blue-pale);}
+  td.hl{color:var(--blue);font-weight:700;}
+  td.hl-red{color:var(--red);font-weight:700;}
+
+  /* CTA BANNER */
+  .cta-banner{background:var(--blue);padding:72px 5%;}
+  .cta-banner-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;}
+  .cta-banner h2{font-family:var(--font-serif);font-size:clamp(24px,3vw,38px);color:var(--white);margin-bottom:10px;line-height:1.15;}
+  .cta-banner p{font-size:15px;color:rgba(255,255,255,.65);font-weight:300;line-height:1.65;}
+  .cta-btns{display:flex;gap:12px;flex-direction:column;align-items:flex-end;}
+  .btn-white{background:var(--white);color:var(--blue);font-size:15px;font-weight:600;padding:13px 28px;border-radius:var(--r-md);text-decoration:none;border:none;cursor:pointer;transition:all .22s;display:inline-block;white-space:nowrap;}
+  .btn-white:hover{background:var(--off-white);transform:translateY(-1px);}
+  .btn-ghost-white{background:transparent;color:var(--white);font-size:14px;font-weight:500;padding:12px 24px;border-radius:var(--r-md);text-decoration:none;border:1.5px solid rgba(255,255,255,.4);transition:all .2s;display:inline-block;white-space:nowrap;}
+  .btn-ghost-white:hover{border-color:var(--white);background:rgba(255,255,255,.08);}
+
+  /* FOOTER */
+  footer{background:var(--white);padding:40px 5% 24px;border-top:3px solid var(--red);}
+  .footer-bottom-bar{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-bottom-bar p{font-size:12px;color:var(--text-muted);}
+  .f-links-bar{display:flex;gap:18px;}
+  .f-links-bar a{font-size:12px;color:var(--text-muted);text-decoration:none;transition:color .2s;}
+  .f-links-bar a:hover{color:var(--blue);}
+  .footer-legal-bar{max-width:1180px;margin:16px auto 0;font-size:11px;color:var(--text-muted);line-height:1.7;padding-top:16px;border-top:1px solid var(--border);}
+
+  @media(max-width:900px){
+    .loan-row-header{grid-template-columns:1fr;}
+    .loan-color-panel{padding:28px 24px;}
+    .loan-content{padding:24px;border-left:none;border-top:1px solid var(--border);}
+    .loan-stats{grid-template-columns:1fr 1fr;}
+    .loan-features{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .cta-banner-inner{grid-template-columns:1fr;}
+    .cta-btns{align-items:flex-start;flex-direction:row;}
+  }
+  @media(max-width:600px){
+    .loan-stats{grid-template-columns:1fr 1fr;}
+    .compare-table{font-size:12px;}
+    .compare-table th,.compare-table td{padding:10px 12px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo"><span class="logo-name"><span class="logo-name-text">Amer<span class="logo-i-star">&#305;<span class="logo-star">★</span></span>Dream</span><span class="logo-sub">Mortgage Group, LLC</span></span></a>
+  <ul class="nav-links">
+    <li><a href="loan-types.html">Loan types</a></li>
+    <li><a href="learning-center.html">Learning center</a></li>
+    <li><a href="checklist.html">Buyer checklist</a></li>
+    <li><a href="meet-the-team.html">Our team</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://www.ameridream.mortgage/?borrowerportal&siteid=5691082585" class="btn-portal">Client Login</a><a href="tel:4693624700" class="nav-phone">(469) 362-4700</a>
+    <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-red">Apply Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › Loan Types</div>
+    <h1>Find the loan that's<br><em>right for you.</em></h1>
+    <p>We work with a wide range of loan programs to match you with the best fit — whether you're a first-time buyer, veteran, or seasoned investor.</p>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-btn active" onclick="filterLoans('all',this)">All loans</button>
+    <button class="filter-btn" onclick="filterLoans('first-time',this)">First-time buyers</button>
+    <button class="filter-btn" onclick="filterLoans('veteran',this)">Veterans</button>
+    <button class="filter-btn" onclick="filterLoans('rural',this)">Rural / USDA</button>
+    <button class="filter-btn" onclick="filterLoans('jumbo',this)">High-value homes</button>
+    <button class="filter-btn" onclick="filterLoans('refi',this)">Refinancing</button>
+  </div>
+</div>
+
+<div class="loans-section">
+
+  <!-- CONVENTIONAL -->
+  <div class="loan-row" data-tags="all refi first-time">
+    <div class="loan-row-header">
+      <div class="loan-color-panel panel-blue">
+        <div>
+          <span class="loan-tag">Conventional</span>
+          <div class="loan-name">Conventional Loan</div>
+        </div>
+        <div class="loan-best">
+          <strong>Best for</strong>
+          Buyers with solid credit and stable income looking for the most flexible loan available.
+        </div>
+      </div>
+      <div class="loan-content">
+        <p class="loan-tagline">The most common loan type — flexible, widely available, and great for buyers who have good credit and want competitive rates without government restrictions.</p>
+        <div class="loan-stats">
+          <div class="loan-stat"><span class="loan-stat-label">Min. down payment</span><span class="loan-stat-val">3%</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Min. credit score</span><span class="loan-stat-val">620+</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Loan limit</span><span class="loan-stat-val">$806,500</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Mortgage insurance</span><span class="loan-stat-val">If &lt;20% down</span></div>
+        </div>
+        <div class="loan-features">
+          <div class="loan-feature">Fixed and adjustable rate options</div>
+          <div class="loan-feature">No upfront mortgage insurance premium</div>
+          <div class="loan-feature">PMI drops off once you reach 20% equity</div>
+          <div class="loan-feature">Works for primary, second homes &amp; investment</div>
+          <div class="loan-feature">Competitive rates for strong-credit borrowers</div>
+          <div class="loan-feature">Widely accepted by sellers</div>
+        </div>
+        <div class="loan-actions">
+          <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-primary">Apply now</a>
+          <a href="contact.html" class="btn-outline">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FHA -->
+  <div class="loan-row" data-tags="all first-time">
+    <div class="loan-row-header">
+      <div class="loan-color-panel panel-red">
+        <div>
+          <span class="loan-tag">FHA</span>
+          <div class="loan-name">FHA Loan</div>
+        </div>
+        <div class="loan-best">
+          <strong>Best for</strong>
+          First-time buyers or those rebuilding credit who need more flexible qualification requirements.
+        </div>
+      </div>
+      <div class="loan-content">
+        <p class="loan-tagline">Government-backed and designed to help more people qualify — lower credit score thresholds and smaller down payments make this a popular choice for first-time buyers across North Texas.</p>
+        <div class="loan-stats">
+          <div class="loan-stat"><span class="loan-stat-label">Min. down payment</span><span class="loan-stat-val">3.5%</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Min. credit score</span><span class="loan-stat-val">580+</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Loan limit</span><span class="loan-stat-val">$524,225</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Mortgage insurance</span><span class="loan-stat-val">Required</span></div>
+        </div>
+        <div class="loan-features">
+          <div class="loan-feature">Lower credit score requirements than conventional</div>
+          <div class="loan-feature">Down payment gifts from family are allowed</div>
+          <div class="loan-feature">Great for buyers with limited savings</div>
+          <div class="loan-feature">Backed by the Federal Housing Administration</div>
+          <div class="loan-feature">Fixed and adjustable rate options</div>
+          <div class="loan-feature">Available in The Colony, Decatur &amp; Bridgeport</div>
+        </div>
+        <div class="loan-actions">
+          <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-primary">Apply now</a>
+          <a href="contact.html" class="btn-outline">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VA -->
+  <div class="loan-row" data-tags="all veteran">
+    <div class="loan-row-header">
+      <div class="loan-color-panel panel-blue">
+        <div>
+          <span class="loan-tag">VA</span>
+          <div class="loan-name">VA Loan</div>
+        </div>
+        <div class="loan-best">
+          <strong>Best for</strong>
+          Veterans, active-duty service members, and eligible surviving spouses who deserve the best loan available.
+        </div>
+      </div>
+      <div class="loan-content">
+        <p class="loan-tagline">Exclusively for those who've served — VA loans offer zero down payment, no mortgage insurance, and some of the lowest interest rates available. It's one of the most powerful benefits of military service.</p>
+        <div class="loan-stats">
+          <div class="loan-stat"><span class="loan-stat-label">Min. down payment</span><span class="loan-stat-val">0%</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Min. credit score</span><span class="loan-stat-val">580+</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Loan limit</span><span class="loan-stat-val">No limit</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Mortgage insurance</span><span class="loan-stat-val">None</span></div>
+        </div>
+        <div class="loan-features">
+          <div class="loan-feature">Zero down payment required</div>
+          <div class="loan-feature">No private mortgage insurance (PMI) ever</div>
+          <div class="loan-feature">Rates often lower than conventional loans</div>
+          <div class="loan-feature">No prepayment penalties</div>
+          <div class="loan-feature">Available for purchase, refinance &amp; cash-out</div>
+          <div class="loan-feature">Lifetime benefit — can be used multiple times</div>
+        </div>
+        <div class="loan-actions">
+          <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-primary">Apply now</a>
+          <a href="contact.html" class="btn-outline">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USDA -->
+  <div class="loan-row" data-tags="all rural first-time">
+    <div class="loan-row-header">
+      <div class="loan-color-panel panel-mix">
+        <div>
+          <span class="loan-tag">USDA</span>
+          <div class="loan-name">USDA Loan</div>
+        </div>
+        <div class="loan-best">
+          <strong>Best for</strong>
+          Buyers in rural and suburban areas — including many Decatur and Bridgeport communities — who want zero down.
+        </div>
+      </div>
+      <div class="loan-content">
+        <p class="loan-tagline">Zero down payment for eligible buyers in USDA-designated rural and suburban areas. Many North Texas communities around Decatur and Bridgeport qualify — ask us if your area is eligible.</p>
+        <div class="loan-stats">
+          <div class="loan-stat"><span class="loan-stat-label">Min. down payment</span><span class="loan-stat-val">0%</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Min. credit score</span><span class="loan-stat-val">640+</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Property location</span><span class="loan-stat-val">Rural / suburban</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Income limits</span><span class="loan-stat-val">Apply</span></div>
+        </div>
+        <div class="loan-features">
+          <div class="loan-feature">No down payment required for eligible areas</div>
+          <div class="loan-feature">Lower mortgage insurance costs than FHA</div>
+          <div class="loan-feature">Decatur &amp; Bridgeport areas often qualify</div>
+          <div class="loan-feature">Income limits based on household size</div>
+          <div class="loan-feature">Must be a primary residence</div>
+          <div class="loan-feature">Backed by the U.S. Dept. of Agriculture</div>
+        </div>
+        <div class="loan-actions">
+          <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-primary">Apply now</a>
+          <a href="contact.html" class="btn-outline">Check eligibility</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JUMBO -->
+  <div class="loan-row" data-tags="all jumbo">
+    <div class="loan-row-header">
+      <div class="loan-color-panel panel-blue">
+        <div>
+          <span class="loan-tag">Jumbo</span>
+          <div class="loan-name">Jumbo Loan</div>
+        </div>
+        <div class="loan-best">
+          <strong>Best for</strong>
+          Buyers of high-value properties above conventional loan limits who have strong credit and income.
+        </div>
+      </div>
+      <div class="loan-content">
+        <p class="loan-tagline">For properties that exceed conventional conforming limits. Jumbo loans require a stronger financial profile but offer competitive rates and the flexibility to finance luxury or high-value homes.</p>
+        <div class="loan-stats">
+          <div class="loan-stat"><span class="loan-stat-label">Min. down payment</span><span class="loan-stat-val">10–20%</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Min. credit score</span><span class="loan-stat-val">700+</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Loan amount</span><span class="loan-stat-val">$806,500+</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Reserves required</span><span class="loan-stat-val">Yes</span></div>
+        </div>
+        <div class="loan-features">
+          <div class="loan-feature">Finance luxury or high-cost properties</div>
+          <div class="loan-feature">Fixed and adjustable rate options</div>
+          <div class="loan-feature">Requires strong credit history</div>
+          <div class="loan-feature">Cash reserves typically required at closing</div>
+          <div class="loan-feature">Available for primary and second homes</div>
+          <div class="loan-feature">Competitive rates for qualified borrowers</div>
+        </div>
+        <div class="loan-actions">
+          <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-primary">Apply now</a>
+          <a href="contact.html" class="btn-outline">Ask a question</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NON-CONFORMING -->
+  <div class="loan-row" data-tags="all refi">
+    <div class="loan-row-header">
+      <div class="loan-color-panel panel-red">
+        <div>
+          <span class="loan-tag">Non-Conforming</span>
+          <div class="loan-name">Non-Conforming Loan</div>
+        </div>
+        <div class="loan-best">
+          <strong>Best for</strong>
+          Self-employed buyers, investors, or borrowers with unique income or credit situations who don't fit standard requirements.
+        </div>
+      </div>
+      <div class="loan-content">
+        <p class="loan-tagline">Not everyone fits the standard mold — and that's okay. Non-conforming loans offer flexible underwriting for self-employed borrowers, investors, or those with complex financial situations.</p>
+        <div class="loan-stats">
+          <div class="loan-stat"><span class="loan-stat-label">Min. down payment</span><span class="loan-stat-val">Varies</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Min. credit score</span><span class="loan-stat-val">Varies</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Income verification</span><span class="loan-stat-val">Flexible</span></div>
+          <div class="loan-stat"><span class="loan-stat-label">Best for</span><span class="loan-stat-val">Unique situations</span></div>
+        </div>
+        <div class="loan-features">
+          <div class="loan-feature">Bank statement loans for self-employed</div>
+          <div class="loan-feature">Asset-based income qualification</div>
+          <div class="loan-feature">Higher loan amounts beyond jumbo limits</div>
+          <div class="loan-feature">Recent credit events may still qualify</div>
+          <div class="loan-feature">Investment &amp; portfolio loans available</div>
+          <div class="loan-feature">Flexible terms tailored to your situation</div>
+        </div>
+        <div class="loan-actions">
+          <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-primary">Apply now</a>
+          <a href="contact.html" class="btn-outline">Talk to us first</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- COMPARISON TABLE -->
+<section class="compare-section">
+  <div class="compare-inner">
+    <span class="eyebrow">Side by side</span>
+    <h2 class="sec-title">Quick comparison</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Conventional</th>
+          <th>FHA</th>
+          <th>VA</th>
+          <th>USDA</th>
+          <th>Jumbo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Min. down payment</td>
+          <td>3%</td><td>3.5%</td>
+          <td class="hl">0%</td>
+          <td class="hl">0%</td>
+          <td>10%+</td>
+        </tr>
+        <tr>
+          <td>Min. credit score</td>
+          <td>620</td><td>580</td><td>580</td><td>640</td><td>700</td>
+        </tr>
+        <tr>
+          <td>Mortgage insurance</td>
+          <td>If &lt;20% down</td><td>Always</td>
+          <td class="hl">None</td>
+          <td>Low fee</td><td>Varies</td>
+        </tr>
+        <tr>
+          <td>Who qualifies</td>
+          <td>Most buyers</td><td>Most buyers</td>
+          <td class="hl-red">Veterans only</td>
+          <td>Rural/suburban</td><td>High earners</td>
+        </tr>
+        <tr>
+          <td>Loan limit</td>
+          <td>$806,500</td><td>$524,225</td>
+          <td class="hl">No limit</td>
+          <td>Area-based</td><td>$806,500+</td>
+        </tr>
+        <tr>
+          <td>Best for</td>
+          <td>Strong credit buyers</td>
+          <td>First-time buyers</td>
+          <td>Veterans &amp; service members</td>
+          <td>Rural/suburban buyers</td>
+          <td>Luxury properties</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-banner-inner">
+    <div>
+      <h2>Not sure which loan is right for you?</h2>
+      <p>Our loan officers will walk you through every option in plain English — no jargon, no pressure. Most clients have a clear path forward after one conversation.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-white">Get pre-approved</a>
+      <a href="contact.html" class="btn-ghost-white">Talk to a loan officer</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom-bar">
+    <p>© 2026 AmeriDream Mortgage Group, LLC · NMLS #275209 · Equal Housing Lender</p>
+    <div class="f-links-bar">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://ameridreammtg.com/privacy-policy">Privacy Policy</a>
+      <a href="https://www.nmlsconsumeraccess.org/">NMLS Consumer Access</a>
+    </div>
+  </div>
+  <div class="footer-legal-bar">AmeriDream Mortgage Group, LLC (NMLS #275209) is an Equal Housing Lender. This is not a commitment to lend or extend credit. Programs, rates, terms and conditions are subject to change without notice.</div>
+</footer>
+
+<script>
+  function filterLoans(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.loan-row').forEach(row => {
+      const tags = row.dataset.tags || '';
+      row.style.display = (tag === 'all' || tags.includes(tag)) ? 'block' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
