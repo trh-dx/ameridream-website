@@ -232,6 +232,68 @@
   </div>
 </section>
 
+<!-- REFINANCE SAVINGS CALCULATOR -->
+<section class="calc-section" id="refinance" style="background:var(--white);border-top:1px solid var(--border);">
+  <div class="wrap">
+    <span class="eyebrow">Refinance savings calculator</span>
+    <h2 class="sec-title">See how much you could save by refinancing.</h2>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label>Current loan balance</label>
+          <span class="calc-field-current" id="refiBalDisplay">$280,000</span>
+          <input type="range" min="25000" max="1500000" step="5000" value="280000" id="refiBal" oninput="updateRefi()" />
+          <div class="calc-field-vals"><span>$25k</span><span>$1.5M</span></div>
+        </div>
+        <div class="calc-field">
+          <label>Current interest rate</label>
+          <span class="calc-field-current" id="refiOldRateDisplay">7.5%</span>
+          <input type="range" min="3" max="12" step="0.1" value="7.5" id="refiOldRate" oninput="updateRefi()" />
+          <div class="calc-field-vals"><span>3%</span><span>12%</span></div>
+        </div>
+        <div class="calc-field">
+          <label>Remaining term</label>
+          <span class="calc-field-current" id="refiOldTermDisplay">25 years</span>
+          <input type="range" min="5" max="30" step="1" value="25" id="refiOldTerm" oninput="updateRefi()" />
+          <div class="calc-field-vals"><span>5 yrs</span><span>30 yrs</span></div>
+        </div>
+        <div class="calc-field">
+          <label>New interest rate</label>
+          <span class="calc-field-current" id="refiNewRateDisplay">6.5%</span>
+          <input type="range" min="3" max="12" step="0.1" value="6.5" id="refiNewRate" oninput="updateRefi()" />
+          <div class="calc-field-vals"><span>3%</span><span>12%</span></div>
+        </div>
+        <div class="calc-field">
+          <label>New loan term</label>
+          <span class="calc-field-current" id="refiNewTermDisplay">30 years</span>
+          <input type="range" min="10" max="30" step="5" value="30" id="refiNewTerm" oninput="updateRefi()" />
+          <div class="calc-field-vals"><span>10 yrs</span><span>30 yrs</span></div>
+        </div>
+        <div class="calc-field">
+          <label>Estimated closing costs</label>
+          <span class="calc-field-current" id="refiClosingDisplay">$4,000</span>
+          <input type="range" min="0" max="15000" step="500" value="4000" id="refiClosing" oninput="updateRefi()" />
+          <div class="calc-field-vals"><span>$0</span><span>$15k</span></div>
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <div class="calc-result-label">Monthly savings</div>
+        <div class="calc-result-payment" id="refiSavings">$198</div>
+        <div class="calc-result-sub">Per month after refinancing</div>
+        <div class="calc-breakdown">
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Current payment</span><span class="calc-breakdown-val" id="refiOldPayment">$2,061</span></div>
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">New payment</span><span class="calc-breakdown-val" id="refiNewPayment">$1,771</span></div>
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Break-even point</span><span class="calc-breakdown-val" id="refiBreakeven">21 months</span></div>
+          <div class="calc-breakdown-row"><span class="calc-breakdown-label">Lifetime interest saved</span><span class="calc-breakdown-val" id="refiIntSaved">$18,450</span></div>
+        </div>
+        <button class="calc-cta" onclick="window.open('https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545')">See if I qualify →</button>
+        <p class="calc-disclaimer">This is an estimate for illustration purposes only. Actual savings depend on credit score, loan type, and lender guidelines. Contact us for an accurate quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- HOME PURCHASE BASICS -->
 <section class="basics-section" id="basics">
   <div class="wrap">
@@ -371,8 +433,43 @@
     document.getElementById('dtiRatio').textContent = dti + '%';
   }
 
+  function updateRefi() {
+    const bal       = +document.getElementById('refiBal').value;
+    const oldRate   = +document.getElementById('refiOldRate').value;
+    const oldTerm   = +document.getElementById('refiOldTerm').value;
+    const newRate   = +document.getElementById('refiNewRate').value;
+    const newTerm   = +document.getElementById('refiNewTerm').value;
+    const closing   = +document.getElementById('refiClosing').value;
+
+    function monthlyPmt(principal, annualRate, years) {
+      const r = annualRate / 100 / 12, n = years * 12;
+      return r > 0 ? principal * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1) : principal / n;
+    }
+
+    const oldPmt    = monthlyPmt(bal, oldRate, oldTerm);
+    const newPmt    = monthlyPmt(bal, newRate, newTerm);
+    const savings   = oldPmt - newPmt;
+    const breakeven = savings > 0 ? Math.ceil(closing / savings) : null;
+    const oldTotal  = oldPmt * oldTerm * 12;
+    const newTotal  = newPmt * newTerm * 12;
+    const intSaved  = oldTotal - newTotal;
+
+    document.getElementById('refiBalDisplay').textContent     = fmt(bal);
+    document.getElementById('refiOldRateDisplay').textContent = oldRate.toFixed(1) + '%';
+    document.getElementById('refiOldTermDisplay').textContent = oldTerm + ' years';
+    document.getElementById('refiNewRateDisplay').textContent = newRate.toFixed(1) + '%';
+    document.getElementById('refiNewTermDisplay').textContent = newTerm + ' years';
+    document.getElementById('refiClosingDisplay').textContent = fmt(closing);
+    document.getElementById('refiOldPayment').textContent     = fmt(oldPmt) + ' / mo';
+    document.getElementById('refiNewPayment').textContent     = fmt(newPmt) + ' / mo';
+    document.getElementById('refiSavings').textContent        = savings > 0 ? fmt(savings) : '$0';
+    document.getElementById('refiBreakeven').textContent      = breakeven !== null && savings > 0 ? breakeven + ' months' : 'N/A';
+    document.getElementById('refiIntSaved').textContent       = fmt(Math.abs(intSaved));
+  }
+
   updateCalc();
   updateAfford();
+  updateRefi();
 </script>
 </body>
 </html>
