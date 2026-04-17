@@ -46,15 +46,17 @@ The site is connected to GitHub and auto-deploys on every push to `main`.
 
 ## Navigation
 
-The top nav bar includes:
+The top nav bar is identical across all 6 pages and includes:
 - Logo (links to homepage)
-- Page links: Loan Types, Learning Center, Meet the Team, Buyer Checklist, Contact
+- Page links (bordered blue pills): Loan Types, Learning Center, Buyer Checklist, Our Team, Contact
 - Facebook icon (links to AmeriDream Facebook page)
-- Client Login button
+- Client Login button (bordered blue)
 - Phone number (tap-to-call on mobile)
-- Apply Now button
+- Apply Now button (red)
 
 On mobile (under 900px) the page links collapse. The Facebook icon, Client Login, phone, and Apply Now remain visible with compact sizing.
+
+To update the Facebook link, search `facebook.com/450436438398721` across all 6 HTML files and replace with your page URL.
 
 ---
 
@@ -121,4 +123,4 @@ DNS is managed through GoDaddy. See `README-godaddy-cname.md` for instructions o
 - All phone numbers are formatted as `tel:` links for mobile tap-to-call
 - The checklist progress is stored in memory only — it resets on page refresh (no backend needed)
 - NMLS numbers: Main #275209 · Decatur #1652928 · Bridgeport #2286544
-- To update the Facebook link, search for `facebook.com/450436438398721` in `index.html` and replace with your page URL
+- To update the Facebook link, search `facebook.com/450436438398721` across all 6 HTML files and replace with your page URL
