@@ -54,6 +54,9 @@
 
   /* TEAM GRID */
   .team-section{padding:72px 5% 96px;}
+  .team-group{margin-bottom:64px;}
+  .team-group-label{font-size:11.5px;font-weight:600;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+  .team-group-title{font-family:var(--font-serif);font-size:clamp(22px,2.5vw,30px);color:var(--text-dark);margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--border);}
   .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 
   .team-card{background:var(--white);border-radius:var(--r-lg);border:1px solid var(--border);overflow:hidden;transition:all .28s;text-decoration:none;display:block;}
@@ -71,6 +74,9 @@
   .team-card-link:hover{gap:10px;color:var(--blue-dark);}
   .team-card:hover .team-card-link{color:var(--red);}
   .team-card-accent{height:3px;background:linear-gradient(90deg,var(--red),var(--blue));}
+  .team-nmls{font-size:11px;color:var(--text-muted);margin-top:5px;letter-spacing:.03em;}
+  .team-email{display:flex;align-items:center;gap:5px;font-size:12.5px;color:var(--blue);margin-bottom:14px;word-break:break-all;text-decoration:none;}
+  .team-email:hover{color:var(--blue-dark);}
 
   /* LOCATIONS STRIP */
   .locations-strip{background:var(--blue);padding:48px 5%;}
@@ -134,135 +140,212 @@
 
 <section class="team-section">
   <div class="wrap">
-    <div class="team-grid">
 
-      <a href="https://www.teamjessehomeloans.com" target="_blank" class="team-card">
-        <div class="team-card-accent"></div>
-        <div class="team-card-top">
-          <div class="team-avatar av-blue">JW</div>
-          <div class="team-name">Jesse Woskowicz</div>
-          <div class="team-role">Loan Originator</div>
-          <div class="team-location">📍 The Colony</div>
-        </div>
-        <div class="team-card-body">
-          <p class="team-bio">Jesse brings years of North Texas mortgage experience, helping families navigate every type of home loan with clarity and confidence.</p>
-          <span class="team-card-link">Visit Jesse's site <span>→</span></span>
-        </div>
-      </a>
+    <!-- MANAGEMENT -->
+    <div class="team-group">
+      <div class="team-group-label">Leadership</div>
+      <div class="team-group-title">Management</div>
+      <div class="team-grid">
 
-      <a href="http://www.kevinamg.com" target="_blank" class="team-card">
-        <div class="team-card-accent"></div>
-        <div class="team-card-top">
-          <div class="team-avatar av-red">KS</div>
-          <div class="team-name">Kevin Shaw</div>
-          <div class="team-role">Loan Originator</div>
-          <div class="team-location">📍 The Colony</div>
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-blue">JW</div>
+            <div class="team-name">Jesse Woskowicz</div>
+            <div class="team-role">President</div>
+            <a href="mailto:Jesse.woskowicz@AmeriDreamMtg.com" class="team-email">✉ Jesse.woskowicz@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #298738</div>
+            <div class="team-location">📍 The Colony</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Jesse brings years of North Texas mortgage experience, helping families navigate every type of home loan with clarity and confidence.</p>
+            <a href="https://www.teamjessehomeloans.com" target="_blank" class="team-card-link">Visit Jesse's site <span>→</span></a>
+          </div>
         </div>
-        <div class="team-card-body">
-          <p class="team-bio">Kevin is known for his hands-on approach and clear communication — clients always know where they stand throughout the entire process.</p>
-          <span class="team-card-link">Visit Kevin's site <span>→</span></span>
-        </div>
-      </a>
 
-      <a href="http://www.jacobamg.com" target="_blank" class="team-card">
-        <div class="team-card-accent"></div>
-        <div class="team-card-top">
-          <div class="team-avatar av-blue">JM</div>
-          <div class="team-name">Jacob Mejia</div>
-          <div class="team-role">Loan Originator</div>
-          <div class="team-location">📍 The Colony</div>
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-red">TH</div>
+            <div class="team-name">Tiffany Hand</div>
+            <div class="team-role">Senior Vice President — Secondary</div>
+            <div class="team-location">📍 The Colony</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Tiffany oversees secondary market operations, ensuring AmeriDream delivers competitive rates and seamless loan execution for every client.</p>
+          </div>
         </div>
-        <div class="team-card-body">
-          <p class="team-bio">Jacob specializes in helping first-time buyers understand all their options and feel confident making one of the biggest financial decisions of their lives.</p>
-          <span class="team-card-link">Visit Jacob's site <span>→</span></span>
-        </div>
-      </a>
 
-      <a href="https://bradamg.com" target="_blank" class="team-card">
-        <div class="team-card-accent"></div>
-        <div class="team-card-top">
-          <div class="team-avatar av-red">BH</div>
-          <div class="team-name">Brad Hunter</div>
-          <div class="team-role">Loan Originator</div>
-          <div class="team-location">📍 Decatur</div>
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-blue">--</div>
+            <div class="team-name">Name TBD</div>
+            <div class="team-role">Senior Vice President — Operations</div>
+            <a href="mailto:CFritz@AmeriDreamMtg.com" class="team-email">✉ CFritz@AmeriDreamMtg.com</a>
+            <div class="team-location">📍 The Colony</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Overseeing day-to-day operations, ensuring every loan file moves efficiently from application to closing with precision and care.</p>
+          </div>
         </div>
-        <div class="team-card-body">
-          <p class="team-bio">Brad serves the Decatur area and surrounding communities, bringing deep local knowledge and a reputation for getting deals closed on time.</p>
-          <span class="team-card-link">Visit Brad's site <span>→</span></span>
-        </div>
-      </a>
 
-      <a href="https://sheaamg.com" target="_blank" class="team-card">
-        <div class="team-card-accent"></div>
-        <div class="team-card-top">
-          <div class="team-avatar av-blue">SA</div>
-          <div class="team-name">Shea Armstrong</div>
-          <div class="team-role">Loan Originator</div>
-          <div class="team-location">📍 The Colony</div>
-        </div>
-        <div class="team-card-body">
-          <p class="team-bio">Shea brings a personalized approach to every client relationship, working hard to find solutions even in complex financial situations.</p>
-          <span class="team-card-link">Visit Shea's site <span>→</span></span>
-        </div>
-      </a>
-
-      <a href="https://leslieamg.com" target="_blank" class="team-card">
-        <div class="team-card-accent"></div>
-        <div class="team-card-top">
-          <div class="team-avatar av-red">LR</div>
-          <div class="team-name">Leslie Riccitelli</div>
-          <div class="team-role">Loan Originator</div>
-          <div class="team-location">📍 The Colony</div>
-        </div>
-        <div class="team-card-body">
-          <p class="team-bio">Leslie is passionate about helping families achieve homeownership, with a warm communication style that puts even nervous buyers at ease.</p>
-          <span class="team-card-link">Visit Leslie's site <span>→</span></span>
-        </div>
-      </a>
-
-      <a href="https://shaleyamg.com" target="_blank" class="team-card">
-        <div class="team-card-accent"></div>
-        <div class="team-card-top">
-          <div class="team-avatar av-blue">ST</div>
-          <div class="team-name">Shaley Tate</div>
-          <div class="team-role">Loan Originator</div>
-          <div class="team-location">📍 Bridgeport</div>
-        </div>
-        <div class="team-card-body">
-          <p class="team-bio">Shaley serves the Bridgeport area with a dedication to responsive service and a thorough understanding of rural lending programs like USDA.</p>
-          <span class="team-card-link">Visit Shaley's site <span>→</span></span>
-        </div>
-      </a>
-
-      <a href="https://jakeamg.com" target="_blank" class="team-card">
-        <div class="team-card-accent"></div>
-        <div class="team-card-top">
-          <div class="team-avatar av-red">JM</div>
-          <div class="team-name">Jake Martinez</div>
-          <div class="team-role">Loan Originator</div>
-          <div class="team-location">📍 The Colony</div>
-        </div>
-        <div class="team-card-body">
-          <p class="team-bio">Jake takes pride in making the mortgage process feel simple and stress-free, with a focus on clear timelines and proactive communication.</p>
-          <span class="team-card-link">Visit Jake's site <span>→</span></span>
-        </div>
-      </a>
-
-      <a href="https://mendaamg.com" target="_blank" class="team-card">
-        <div class="team-card-accent"></div>
-        <div class="team-card-top">
-          <div class="team-avatar av-blue">MH</div>
-          <div class="team-name">Menda Huddleston</div>
-          <div class="team-role">Loan Originator</div>
-          <div class="team-location">📍 The Colony</div>
-        </div>
-        <div class="team-card-body">
-          <p class="team-bio">Menda brings a wealth of experience and a genuine passion for helping clients find the right loan, especially those navigating the process for the first time.</p>
-          <span class="team-card-link">Visit Menda's site <span>→</span></span>
-        </div>
-      </a>
-
+      </div>
     </div>
+
+    <!-- LOAN ORIGINATORS -->
+    <div class="team-group">
+      <div class="team-group-label">Our Specialists</div>
+      <div class="team-group-title">Loan Originators</div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-red">KS</div>
+            <div class="team-name">Kevin Shaw</div>
+            <div class="team-role">Loan Originator</div>
+            <a href="mailto:Kevin.Shaw@AmeriDreamMtg.com" class="team-email">✉ Kevin.Shaw@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #288362</div>
+            <div class="team-location">📍 The Colony</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Kevin is known for his hands-on approach and clear communication — clients always know where they stand throughout the entire process.</p>
+            <a href="http://www.kevinamg.com" target="_blank" class="team-card-link">Visit Kevin's site <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-blue">JM</div>
+            <div class="team-name">Jacob Mejia</div>
+            <div class="team-role">Loan Originator</div>
+            <a href="mailto:JMejia@AmeriDreamMtg.com" class="team-email">✉ JMejia@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #365906</div>
+            <div class="team-location">📍 The Colony</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Jacob specializes in helping first-time buyers understand all their options and feel confident making one of the biggest financial decisions of their lives.</p>
+            <a href="http://www.jacobamg.com" target="_blank" class="team-card-link">Visit Jacob's site <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-red">BH</div>
+            <div class="team-name">Brad Hunter</div>
+            <div class="team-role">Loan Originator</div>
+            <a href="mailto:Brad.Hunter@AmeriDreamMtg.com" class="team-email">✉ Brad.Hunter@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #1747584</div>
+            <div class="team-location">📍 Bridgeport</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Brad serves the Decatur area and surrounding communities, bringing deep local knowledge and a reputation for getting deals closed on time.</p>
+            <a href="https://bradamg.com" target="_blank" class="team-card-link">Visit Brad's site <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-blue">SA</div>
+            <div class="team-name">Shea Armstrong</div>
+            <div class="team-role">Loan Originator</div>
+            <a href="mailto:Shea.Armstrong@AmeriDreamMtg.com" class="team-email">✉ Shea.Armstrong@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #37127</div>
+            <div class="team-location">📍 The Colony</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Shea brings a personalized approach to every client relationship, working hard to find solutions even in complex financial situations.</p>
+            <a href="https://sheaamg.com" target="_blank" class="team-card-link">Visit Shea's site <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-red">LR</div>
+            <div class="team-name">Leslie Riccitelli</div>
+            <div class="team-role">Loan Originator</div>
+            <a href="mailto:Leslie@AmeriDreamMtg.com" class="team-email">✉ Leslie@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #1987410</div>
+            <div class="team-location">📍 The Colony</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Leslie is passionate about helping families achieve homeownership, with a warm communication style that puts even nervous buyers at ease.</p>
+            <a href="https://leslieamg.com" target="_blank" class="team-card-link">Visit Leslie's site <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-blue">ST</div>
+            <div class="team-name">Shaley Tate</div>
+            <div class="team-role">Loan Originator</div>
+            <a href="mailto:Shaley@AmeriDreamMtg.com" class="team-email">✉ Shaley@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #2256129</div>
+            <div class="team-location">📍 Bridgeport</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Shaley serves the Bridgeport area with a dedication to responsive service and a thorough understanding of rural lending programs like USDA.</p>
+            <a href="https://shaleyamg.com" target="_blank" class="team-card-link">Visit Shaley's site <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-red">JM</div>
+            <div class="team-name">Jake Martinez</div>
+            <div class="team-role">Loan Originator</div>
+            <a href="mailto:Jake@AmeriDreamMtg.com" class="team-email">✉ Jake@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #2453141</div>
+            <div class="team-location">📍 Bridgeport</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Jake takes pride in making the mortgage process feel simple and stress-free, with a focus on clear timelines and proactive communication.</p>
+            <a href="https://jakeamg.com" target="_blank" class="team-card-link">Visit Jake's site <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-blue">MH</div>
+            <div class="team-name">Menda Huddleston</div>
+            <div class="team-role">Loan Originator</div>
+            <a href="mailto:Menda@AmeriDreamMtg.com" class="team-email">✉ Menda@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #1822866 · ML027292 (OK)</div>
+            <div class="team-location">📍 The Colony</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Menda brings a wealth of experience and a genuine passion for helping clients find the right loan, especially those navigating the process for the first time.</p>
+            <a href="https://mendaamg.com" target="_blank" class="team-card-link">Visit Menda's site <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-accent"></div>
+          <div class="team-card-top">
+            <div class="team-avatar av-red">DF</div>
+            <div class="team-name">Diedra Freeman</div>
+            <div class="team-role">Loan Originator</div>
+            <a href="mailto:Diedra@AmeriDreamMtg.com" class="team-email">✉ Diedra@AmeriDreamMtg.com</a>
+            <div class="team-nmls">NMLS #2404664</div>
+            <div class="team-location">📍 Bridgeport</div>
+          </div>
+          <div class="team-card-body">
+            <p class="team-bio">Diedra is dedicated to guiding clients through the mortgage process with patience and expertise, making sure every borrower feels informed and confident.</p>
+            <a href="https://diedraamg.com" target="_blank" class="team-card-link">Visit Diedra's site <span>→</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
