@@ -32,6 +32,8 @@
   .nav-links a{font-size:13px;color:var(--blue);font-weight:500;text-decoration:none;padding:7px 14px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--blue-pale);transition:all .18s;}
   .nav-links a:hover{color:var(--blue-dark);background:var(--blue-light);border-color:var(--blue);}
   .nav-right{display:flex;align-items:center;gap:14px;}
+  .nav-fb{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--blue);color:var(--white);transition:background .2s;flex-shrink:0;}
+  .nav-fb:hover{background:var(--blue-dark,#0a2a5e);}
   .nav-phone{font-size:13px;color:var(--text-dark);font-weight:500;text-decoration:none;}
   .btn-portal{background:transparent;color:var(--blue);font-size:13px;font-weight:500;padding:7px 16px;border-radius:var(--r-sm);text-decoration:none;border:1.5px solid var(--blue);transition:all .2s;display:inline-block;}
   .btn-portal:hover{border-color:var(--blue-dark);background:var(--blue-light);}
@@ -136,7 +138,7 @@
   .f-links-bar a:hover{color:var(--blue);}
   .footer-legal-bar{max-width:1180px;margin:16px auto 0;font-size:11px;color:var(--text-muted);line-height:1.7;padding-top:16px;border-top:1px solid var(--border);}
 
-  @media(max-width:960px){.checklist-inner{grid-template-columns:1fr;}.checklist-sidebar{position:static;}.nav-links{display:none;}.cta-banner-inner{grid-template-columns:1fr;}.cta-btns{align-items:flex-start;flex-direction:row;}}
+  @media(max-width:960px){.checklist-inner{grid-template-columns:1fr;}.checklist-sidebar{position:static;}.nav-links{display:none;}.nav-right{gap:8px;}.nav-phone{font-size:11px;}.btn-portal{font-size:11px;padding:6px 10px;}.btn-red{font-size:11px;padding:7px 12px;}.cta-banner-inner{grid-template-columns:1fr;}.cta-btns{align-items:flex-start;flex-direction:row;}}
 </style>
 </head>
 <body>
@@ -146,10 +148,14 @@
   <ul class="nav-links">
     <li><a href="loan-types.html">Loan types</a></li>
     <li><a href="learning-center.html">Learning center</a></li>
+    <li><a href="checklist.html">Buyer checklist</a></li>
     <li><a href="meet-the-team.html">Our team</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <div class="nav-right">
+    <a href="https://www.facebook.com/450436438398721" target="_blank" rel="noopener" aria-label="Facebook" class="nav-fb">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
     <a href="https://www.ameridream.mortgage/?borrowerportal&siteid=5691082585" class="btn-portal">Client Login</a>
     <a href="tel:4693624700" class="nav-phone">(469) 362-4700</a>
     <a href="https://www.ameridream.mortgage/?loanapp&siteid=5691082585&workFlowId=67545" class="btn-red">Apply Now</a>
