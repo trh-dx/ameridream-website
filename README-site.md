@@ -146,6 +146,18 @@ To update the Operations SVP name, search `Name TBD` in `meet-the-team.html`.
 
 ---
 
+## Recent Changes
+
+| Date | File | Change |
+|---|---|---|
+| 2026-04-16 | `index.html` | Made "No credit pull · No commitment · 2 minutes" bold and changed text color to solid white for better visibility |
+| 2026-04-16 | `meet-the-team.html` | Fixed phone number color |
+| Prior | `meet-the-team.html` | Added Management and Loan Originators sections, NMLS numbers, emails, locations, and new team members |
+| Prior | All pages | Standardized nav bar — consistent button styles and links across all 6 pages |
+| Prior | `learning-center.html`, `contact.html` | Matched logo style to rest of site |
+
+---
+
 ## Notes
 
 - All phone numbers are formatted as `tel:` links for mobile tap-to-call
