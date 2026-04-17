@@ -12,7 +12,7 @@ Static HTML/CSS/JS website for AmeriDream Mortgage Group, LLC (NMLS #275209). Ho
 | `contact.html` | `/contact` | Contact form (Netlify Forms), office locations, hours |
 | `learning-center.html` | `/learning-center` | Mortgage calculator, affordability calculator, refinance savings calculator, glossary |
 | `loan-types.html` | `/loan-types` | Conventional, FHA, VA, USDA, Jumbo loan details |
-| `meet-the-team.html` | `/meet-the-team` | Loan originator profiles |
+| `meet-the-team.html` | `/meet-the-team` | Team profiles split into Management and Loan Originators sections, each with NMLS number, email, location, and personal site link |
 | `checklist.html` | `/checklist` | Interactive first-time buyer checklist |
 
 ---
@@ -115,6 +115,34 @@ A `_headers` file is included in the root of the project. It applies the followi
 ## Custom Domain
 
 DNS is managed through GoDaddy. See `README-godaddy-cname.md` for instructions on pointing your domain to Vercel.
+
+---
+
+## Team Page
+
+`meet-the-team.html` is split into two sections:
+
+**Management**
+| Name | Title | NMLS |
+|---|---|---|
+| Jesse Woskowicz | President | #298738 |
+| Tiffany Hand | Senior Vice President — Secondary | — |
+| Name TBD | Senior Vice President — Operations | — |
+
+**Loan Originators**
+| Name | NMLS | Location |
+|---|---|---|
+| Kevin Shaw | #288362 | The Colony |
+| Jacob Mejia | #365906 | The Colony |
+| Brad Hunter | #1747584 | Bridgeport |
+| Shea Armstrong | #37127 | The Colony |
+| Leslie Riccitelli | #1987410 | The Colony |
+| Shaley Tate | #2256129 | Bridgeport |
+| Jake Martinez | #2453141 | Bridgeport |
+| Menda Huddleston | #1822866 · ML027292 (OK) | The Colony |
+| Diedra Freeman | #2404664 | Bridgeport |
+
+To update the Operations SVP name, search `Name TBD` in `meet-the-team.html`.
 
 ---
 
